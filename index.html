@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Najee M. Ahmad | Underwater Portfolio</title>
+  <meta name="description" content="Portfolio of Najee M. Ahmad, Grade 12 TVL-3 CSS (Computer Systems Servicing) student at Tomas Cabili National High School. Dive from the surface to the abyss to explore hobbies, skills and projects.">
+  <meta name="theme-color" content="#0B1F33">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%230B1F33'/%3E%3Crect x='2' y='3' width='4' height='2' fill='%2363D6D0'/%3E%3Crect x='1' y='2' width='1' height='4' fill='%2320B2AA'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%23FFFFF0'/%3E%3C/svg%3E">
+
+  <!-- Pixel font. If it can't load (offline), a monospace fallback is used automatically. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<!--
+  ====================================================================
+  HOW TO CUSTOMIZE THIS PORTFOLIO
+  ====================================================================
+  1. Profile photo ......... put a square photo at  images/profile.jpg
+  2. Project screenshots ... put images at  images/project-1.png, project-2.png, project-3.png
+                             (missing images automatically show a placeholder)
+  3. Anything in [square brackets] is a placeholder: search for "[" and replace it.
+  4. Address: find the row marked "OPTIONAL ADDRESS" in the hero and remove the
+     word  hidden  from it if you want to show it.
+  5. Hobbies / skills: edit the text inside each <article class="card">.
+     Proficiency dots: change  data-level="3"  (0 to 5).
+  6. Projects: edit each project card AND its matching <div class="project-details">.
+  7. Links: replace the example GitHub / LinkedIn / Facebook / email addresses.
+  ====================================================================
+-->
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============================ NAVIGATION ============================ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#surface" data-scroll aria-label="Najee M. Ahmad - return to the surface">
+        <span class="brand-fish" data-sprite="fish" data-palette="turq" aria-hidden="true"></span>
+        <span class="brand-text">N. M. Ahmad</span>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#surface"  data-scroll data-zone-link="surface"><span class="n">01</span>Surface</a></li>
+        <li><a href="#shallows" data-scroll data-zone-link="shallows"><span class="n">02</span>Shallows</a></li>
+        <li><a href="#abyss"    data-scroll data-zone-link="abyss"><span class="n">03</span>Abyss</a></li>
+        <li><a href="#depths"   data-scroll data-zone-link="depths"><span class="n">04</span>Depths</a></li>
+      </ul>
+
+      <div class="depth-readout" aria-hidden="true">
+        <span class="depth-label">Depth</span>
+        <strong id="depth-meters">0 m</strong>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="sr-only" id="nav-toggle-label">Open menu</span>
+        <span class="bars" aria-hidden="true"></span>
+      </button>
+    </nav>
+    <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+  </header>
+
+  <!-- Depth gauge: jump to any zone -->
+  <aside class="depth-gauge" aria-label="Depth indicator and zone shortcuts">
+    <div class="gauge-track">
+      <span class="gauge-fill" id="gauge-fill" aria-hidden="true"></span>
+      <a class="gauge-tick" href="#surface"  data-scroll data-zone-link="surface"  data-index="0" style="top:0%"  aria-label="The Surface"        title="The Surface"></a>
+      <a class="gauge-tick" href="#shallows" data-scroll data-zone-link="shallows" data-index="1" style="top:25%" aria-label="The Shallows"       title="The Shallows"></a>
+      <a class="gauge-tick" href="#abyss"    data-scroll data-zone-link="abyss"    data-index="2" style="top:55%" aria-label="The Abyss"          title="The Abyss"></a>
+      <a class="gauge-tick" href="#depths"   data-scroll data-zone-link="depths"   data-index="3" style="top:85%" aria-label="The Abyssal Depths"  title="The Abyssal Depths"></a>
+      <span class="gauge-marker" id="gauge-marker" aria-hidden="true"></span>
+    </div>
+  </aside>
+
+  <!-- Fixed effects: rising bubbles and a darkening vignette -->
+  <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+  <div class="vignette" id="vignette" aria-hidden="true"></div>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ===================== 01 THE SURFACE : ABOUT ME ===================== -->
+    <section id="surface" class="zone zone-surface" aria-labelledby="about-title">
+      <div class="scene scene-surface" aria-hidden="true">
+        <div class="sun-wrap"><div class="sun"></div></div>
+        <div class="clouds" id="clouds"></div>
+        <div class="sea">
+          <div class="wave wave-back"></div>
+          <div class="wave wave-front"></div>
+        </div>
+        <div class="sand"></div>
+        <div class="palm palm-a" data-sprite="palm"></div>
+        <div class="palm palm-b" data-sprite="palm"></div>
+        <div class="shore-critter crab" data-sprite="crab"></div>
+        <div class="shore-critter starfish" data-sprite="starfish"></div>
+      </div>
+
+      <div class="zone-content hero-grid">
+        <figure class="profile-card reveal">
+          <div class="profile-frame">
+            <span class="profile-fallback" aria-hidden="true">Your photo<br>goes here</span>
+            <!-- Replace images/profile.jpg with your own square photo -->
+            <img src="images/profile.jpg" alt="Portrait of Najee M. Ahmad" width="320" height="320" data-fallback>
+          </div>
+          <figcaption>Grade 12 &middot; TVL-3 CSS</figcaption>
+        </figure>
+
+        <div class="hero-panel reveal">
+          <p class="eyebrow">Welcome to my world &middot; The Surface</p>
+          <h1 id="about-title">Najee M. Ahmad</h1>
+          <p class="hero-role">Computer Systems Servicing student</p>
+
+          <dl class="facts">
+            <div class="fact"><dt>Age</dt><dd>[Insert age]</dd></div>
+            <div class="fact"><dt>Grade &amp; Strand</dt><dd>Grade 12 &middot; TVL-3 CSS</dd></div>
+            <div class="fact"><dt>School</dt><dd>Tomas Cabili National High School</dd></div>
+            <!-- OPTIONAL ADDRESS: remove the word "hidden" below only if you choose to share it -->
+            <div class="fact" hidden><dt>Address</dt><dd>[Your address]</dd></div>
+          </dl>
+
+          <blockquote class="motto">
+            <p>&ldquo;[Your personal motto goes here]&rdquo;</p>
+          </blockquote>
+
+          <p class="intro">
+            Hello! I'm Najee, a Grade 12 student taking Computer Systems Servicing (CSS) at Tomas Cabili
+            National High School. I like finding out how computers work, from the hardware inside the case to
+            the websites on the screen. [Replace this paragraph with your own short introduction.]
+          </p>
+
+          <button type="button" class="btn btn-primary" data-scroll-target="shallows">
+            Dive Into My World <span class="btn-arrow" aria-hidden="true">&#9660;</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== 02 THE SHALLOWS : HOBBIES AND SKILLS ================== -->
+    <section id="shallows" class="zone zone-shallows" aria-labelledby="shallows-title">
+      <div class="scene scene-shallows" aria-hidden="true">
+        <div class="rays rays-a"></div>
+        <div class="rays rays-b"></div>
+        <div class="layer" data-speed="0.10"><div class="field" data-field="fish-far"></div></div>
+        <div class="layer" data-speed="0.22"><div class="field" data-field="fish-mid"></div></div>
+        <div class="particles" data-particles="plankton"></div>
+        <div class="reef" id="reef"></div>
+      </div>
+
+      <div class="zone-content">
+        <header class="section-head panel reveal">
+          <p class="eyebrow">Zone 02 &middot; 10&ndash;200 m</p>
+          <h2 id="shallows-title" class="zone-title">The Shallows</h2>
+          <p>Hobbies and skills live where the light is brightest. Click or tap any card to reveal more.</p>
+        </header>
+
+        <h3 class="group-title reveal">Skills</h3>
+        <div class="card-grid" data-stagger>
+
+          <article class="card reveal">
+            <div class="card-icon" data-sprite="icon-browser" aria-hidden="true"></div>
+            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-html">HTML &amp; CSS</button></h4>
+            <p class="card-teaser">Building and styling web pages.</p>
+            <div class="card-more" id="more-html"><div class="card-more-inner">
+              <p>[Edit] I write semantic HTML and responsive CSS layouts. Add the pages, projects or practice work you have built.</p>
+              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
+            </div></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" data-sprite="icon-braces" aria-hidden="true"></div>
+            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-js">JavaScript</button></h4>
+            <p class="card-teaser">Making pages interactive.</p>
+            <div class="card-more" id="more-js"><div class="card-more-inner">
+              <p>[Edit] Describe what you can do with JavaScript: menus, modals, small games, form checks, and so on.</p>
+              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="2" role="img" aria-label="Proficiency: 2 out of 5"></span></div>
+            </div></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" data-sprite="icon-chip" aria-hidden="true"></div>
+            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-hw">Computer Hardware</button></h4>
+            <p class="card-teaser">Parts, assembly and upkeep.</p>
+            <div class="card-more" id="more-hw"><div class="card-more-inner">
+              <p>[Edit] Mention the hardware tasks you practice: identifying components, assembling a PC, upgrading RAM or storage, safe handling.</p>
+              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="4" role="img" aria-label="Proficiency: 4 out of 5"></span></div>
+            </div></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" data-sprite="icon-magnifier" aria-hidden="true"></div>
+            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-ts">Troubleshooting</button></h4>
+            <p class="card-teaser">Finding and fixing computer problems.</p>
+            <div class="card-more" id="more-ts"><div class="card-more-inner">
+              <p>[Edit] Explain how you diagnose problems step by step, such as a PC that won't boot or a slow system, and how you document the fix.</p>
+              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
+            </div></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" data-sprite="icon-network" aria-hidden="true"></div>
+            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-net">Networking</button></h4>
+            <p class="card-teaser">Connecting computers together.</p>
+            <div class="card-more" id="more-net"><div class="card-more-inner">
+              <p>[Edit] Share what you know about LAN setup, cabling, IP addressing or configuring a router or switch.</p>
+              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
+            </div></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" data-sprite="crab" aria-hidden="true"></div>
+            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-other">Other Skill [Edit]</button></h4>
+            <p class="card-teaser">Add another skill you really have.</p>
+            <div class="card-more" id="more-other"><div class="card-more-inner">
+              <p>[Edit] For example: office software, video editing, teamwork, or communication. Delete this card if you don't need it.</p>
+              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
+            </div></div>
+          </article>
+        </div>
+
+        <h3 class="group-title reveal">Hobbies</h3>
+        <div class="card-grid" data-stagger>
+
+          <article class="card reveal">
+            <div class="card-icon" data-sprite="icon-gamepad" aria-hidden="true"></div>
+            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-h1">Gaming [Edit]</button></h4>
+            <p class="card-teaser">Replace with your own hobby.</p>
+            <div class="card-more" id="more-h1"><div class="card-more-inner">
+              <p>[Edit] Tell visitors what you enjoy about this hobby and what it has taught you.</p>
+            </div></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" data-sprite="icon-headphones" aria-hidden="true"></div>
+            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-h2">Music [Edit]</button></h4>
+            <p class="card-teaser">Replace with your own hobby.</p>
+            <div class="card-more" id="more-h2"><div class="card-more-inner">
+              <p>[Edit] Mention the kinds of music you like, instruments you play, or playlists you make.</p>
+            </div></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" data-sprite="icon-palette" aria-hidden="true"></div>
+            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-h3">Digital Art &amp; Design [Edit]</button></h4>
+            <p class="card-teaser">Replace with your own hobby.</p>
+            <div class="card-more" id="more-h3"><div class="card-more-inner">
+              <p>[Edit] Describe the art, design or editing you do and the tools you use.</p>
+            </div></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" data-sprite="starfish" aria-hidden="true"></div>
+            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-h4">Your Hobby Here</button></h4>
+            <p class="card-teaser">Add one more favorite activity.</p>
+            <div class="card-more" id="more-h4"><div class="card-more-inner">
+              <p>[Edit] Sports, reading, cooking, travelling... anything that tells visitors who you are.</p>
+            </div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ 03 THE ABYSS : PROJECTS AND EXPERIENCE ================ -->
+    <section id="abyss" class="zone zone-abyss" aria-labelledby="abyss-title">
+      <div class="scene scene-abyss" aria-hidden="true">
+        <div class="rays rays-deep"></div>
+        <div class="fog fog-a"></div>
+        <div class="fog fog-b"></div>
+        <div class="layer" data-speed="0.06"><div class="field" data-field="sharks"></div></div>
+        <div class="layer" data-speed="0.16"><div class="field" data-field="jellies"></div></div>
+        <div class="particles" data-particles="glow"></div>
+        <div class="ruins">
+          <i class="rock r1"></i>
+          <i class="pillar p1"></i>
+          <i class="pillar p2"></i>
+          <div class="arch"><i class="pillar"></i><i class="lintel"></i><i class="pillar"></i></div>
+          <i class="rock r2"></i>
+          <i class="pillar p3"></i>
+          <i class="rock r3"></i>
+        </div>
+      </div>
+
+      <div class="zone-content">
+        <header class="section-head panel reveal">
+          <p class="eyebrow">Zone 03 &middot; 200&ndash;3,000 m</p>
+          <h2 id="abyss-title" class="zone-title">The Abyss</h2>
+          <p>Projects and experience, recovered from the deep. The three below are <strong>sample placeholders</strong> &mdash; replace them with your real work.</p>
+        </header>
+
+        <div class="project-grid" data-stagger>
+
+          <article class="project-card reveal">
+            <div class="terminal-bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="terminal-title">PROJECT_01</span>
+              <span class="badge">Placeholder</span>
+            </div>
+            <div class="shot">
+              <span class="shot-fallback" aria-hidden="true">Screenshot placeholder</span>
+              <img src="images/project-1.png" alt="Screenshot of Sample Project 1, a personal portfolio website" width="800" height="500" data-fallback>
+            </div>
+            <div class="project-body">
+              <h3>Sample Project 1: Personal Website</h3>
+              <p>[Edit] A short description of a website you designed and built from scratch.</p>
+              <ul class="tags" aria-label="Technologies used">
+                <li>HTML</li><li>CSS</li><li>JavaScript</li>
+              </ul>
+              <button type="button" class="btn btn-ghost" data-project-open="project-1-details">View Details</button>
+            </div>
+            <div class="project-details" id="project-1-details" hidden>
+              <h3>Sample Project 1: Personal Website</h3>
+              <p class="detail-meta">Placeholder &middot; [Month Year] &middot; [Solo / Team]</p>
+              <div class="shot">
+                <span class="shot-fallback" aria-hidden="true">Screenshot placeholder</span>
+                <img src="images/project-1.png" alt="Screenshot of Sample Project 1, a personal portfolio website" width="800" height="500" data-fallback>
+              </div>
+              <h4>Overview</h4>
+              <p>[Edit] Explain what the project is, who it is for, and why you made it.</p>
+              <h4>What I did</h4>
+              <ul class="detail-list">
+                <li>[Edit] Planned the layout and chose the colors.</li>
+                <li>[Edit] Wrote the HTML, CSS and JavaScript.</li>
+                <li>[Edit] Tested it on phone and desktop.</li>
+              </ul>
+              <h4>Skills used</h4>
+              <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+              <p><a class="btn btn-ghost" href="https://github.com/your-username/project-1" target="_blank" rel="noopener noreferrer">View on GitHub (example link) &#8599;</a></p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="terminal-bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="terminal-title">PROJECT_02</span>
+              <span class="badge">Placeholder</span>
+            </div>
+            <div class="shot">
+              <span class="shot-fallback" aria-hidden="true">Screenshot placeholder</span>
+              <img src="images/project-2.png" alt="Photo of Sample Project 2, a PC assembly and troubleshooting log" width="800" height="500" data-fallback>
+            </div>
+            <div class="project-body">
+              <h3>Sample Project 2: PC Assembly &amp; Troubleshooting Log</h3>
+              <p>[Edit] Document a computer you assembled, repaired or diagnosed.</p>
+              <ul class="tags" aria-label="Skills used">
+                <li>Hardware</li><li>Troubleshooting</li><li>Documentation</li>
+              </ul>
+              <button type="button" class="btn btn-ghost" data-project-open="project-2-details">View Details</button>
+            </div>
+            <div class="project-details" id="project-2-details" hidden>
+              <h3>Sample Project 2: PC Assembly &amp; Troubleshooting Log</h3>
+              <p class="detail-meta">Placeholder &middot; [Month Year] &middot; [Class activity / Personal]</p>
+              <div class="shot">
+                <span class="shot-fallback" aria-hidden="true">Photo placeholder</span>
+                <img src="images/project-2.png" alt="Photo of Sample Project 2, a PC assembly and troubleshooting log" width="800" height="500" data-fallback>
+              </div>
+              <h4>Overview</h4>
+              <p>[Edit] Describe the computer, the problem or the build goal.</p>
+              <h4>What I did</h4>
+              <ul class="detail-list">
+                <li>[Edit] Identified and installed the components.</li>
+                <li>[Edit] Tested the system and recorded the results.</li>
+                <li>[Edit] Wrote down the problem, the cause and the fix.</li>
+              </ul>
+              <h4>Skills used</h4>
+              <ul class="tags"><li>Hardware</li><li>Troubleshooting</li><li>Documentation</li></ul>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="terminal-bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="terminal-title">PROJECT_03</span>
+              <span class="badge">Placeholder</span>
+            </div>
+            <div class="shot">
+              <span class="shot-fallback" aria-hidden="true">Screenshot placeholder</span>
+              <img src="images/project-3.png" alt="Diagram of Sample Project 3, a small local area network setup" width="800" height="500" data-fallback>
+            </div>
+            <div class="project-body">
+              <h3>Sample Project 3: Small LAN Setup</h3>
+              <p>[Edit] Show a network you planned, cabled or configured.</p>
+              <ul class="tags" aria-label="Skills used">
+                <li>Networking</li><li>Cabling</li><li>Configuration</li>
+              </ul>
+              <button type="button" class="btn btn-ghost" data-project-open="project-3-details">View Details</button>
+            </div>
+            <div class="project-details" id="project-3-details" hidden>
+              <h3>Sample Project 3: Small LAN Setup</h3>
+              <p class="detail-meta">Placeholder &middot; [Month Year] &middot; [Class activity / Personal]</p>
+              <div class="shot">
+                <span class="shot-fallback" aria-hidden="true">Diagram placeholder</span>
+                <img src="images/project-3.png" alt="Diagram of Sample Project 3, a small local area network setup" width="800" height="500" data-fallback>
+              </div>
+              <h4>Overview</h4>
+              <p>[Edit] Describe the network: how many computers, what equipment, and what it was for.</p>
+              <h4>What I did</h4>
+              <ul class="detail-list">
+                <li>[Edit] Prepared and tested the network cables.</li>
+                <li>[Edit] Configured IP addresses and checked connectivity.</li>
+                <li>[Edit] Solved any connection problems.</li>
+              </ul>
+              <h4>Skills used</h4>
+              <ul class="tags"><li>Networking</li><li>Cabling</li><li>Configuration</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 04 THE ABYSSAL DEPTHS : FINAL SECTION ============== -->
+    <section id="depths" class="zone zone-depths" aria-labelledby="depths-title">
+      <div class="scene scene-depths" aria-hidden="true">
+        <div class="lava-glow"></div>
+        <div class="particles" data-particles="embers"></div>
+
+        <div class="tentacle t-r1" data-sprite="tentacle"></div>
+        <div class="tentacle t-r2" data-sprite="tentacle"></div>
+        <div class="tentacle t-r3" data-sprite="tentacle"></div>
+        <div class="tentacle t-l1 is-left" data-sprite="tentacle"></div>
+        <div class="tentacle t-l2 is-left" data-sprite="tentacle"></div>
+        <div class="tentacle t-l3 is-left" data-sprite="tentacle"></div>
+
+        <div class="floor">
+          <div class="kraken-head" data-sprite="kraken"></div>
+          <i class="vrock vr1"></i><i class="vrock vr2"></i><i class="vrock vr3"></i>
+          <i class="vrock vr4"></i><i class="vrock vr5"></i><i class="vrock vr6"></i>
+          <div class="vent v1"><i class="vent-body"></i></div>
+          <div class="vent v2"><i class="vent-body"></i></div>
+          <div class="vent v3"><i class="vent-body"></i></div>
+          <div class="ground">
+            <i class="crack c1"></i><i class="crack c2"></i><i class="crack c3"></i><i class="crack c4"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="zone-content">
+        <header class="section-head panel reveal">
+          <p class="eyebrow">Zone 04 &middot; 3,000 m and below</p>
+          <h2 id="depths-title" class="zone-title">The Abyssal Depths</h2>
+          <p>The final level. Here is where I'm headed next.</p>
+        </header>
+
+        <div class="depth-grid" data-stagger>
+          <section class="panel reveal" aria-labelledby="goals-title">
+            <h3 id="goals-title" class="panel-title">Future Goals</h3>
+            <ul class="bullet-list">
+              <li>[Edit] Finish Senior High School with strong grades.</li>
+              <li>[Edit] Earn a national certificate in Computer Systems Servicing.</li>
+              <li>[Edit] Build a portfolio of real projects.</li>
+            </ul>
+          </section>
+
+          <section class="panel reveal" aria-labelledby="career-title">
+            <h3 id="career-title" class="panel-title">Career Aspirations</h3>
+            <p>[Edit] Describe the CSS or IT career you want, for example a computer technician, network technician, IT support specialist or web developer, and why it interests you.</p>
+          </section>
+
+          <section class="panel reveal" aria-labelledby="learn-title">
+            <h3 id="learn-title" class="panel-title">Skills I Want to Learn</h3>
+            <ul class="tags tags-large">
+              <li>[Skill 1]</li>
+              <li>Cybersecurity basics</li>
+              <li>Server administration</li>
+              <li>[Skill 4]</li>
+            </ul>
+            <p class="small-note">Edit these chips to match your own learning goals.</p>
+          </section>
+        </div>
+
+        <section class="panel bottle reveal" aria-labelledby="message-title">
+          <h3 id="message-title" class="panel-title">A Message in a Bottle</h3>
+          <p>
+            Thank you for diving all the way down. [Replace this with your own final message to visitors: what
+            you hope they remember, what you're excited about, and an invitation to get in touch.]
+          </p>
+        </section>
+
+        <section class="panel contact reveal" aria-labelledby="contact-title">
+          <h3 id="contact-title" class="panel-title">Contact &amp; Profiles</h3>
+          <dl class="contact-list">
+            <div class="contact-row">
+              <dt>Email</dt>
+              <dd>
+                <a id="email-link" href="mailto:your.email@example.com">your.email@example.com</a>
+                <button type="button" id="copy-email" class="btn btn-ghost btn-small">Copy</button>
+              </dd>
+            </div>
+            <div class="contact-row">
+              <dt>Phone</dt>
+              <dd><a href="tel:+639000000000">+63 900 000 0000</a> <span class="small-note">[example]</span></dd>
+            </div>
+          </dl>
+          <ul class="social-links">
+            <li><a class="btn btn-ghost" href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a></li>
+            <li><a class="btn btn-ghost" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a></li>
+            <li><a class="btn btn-ghost" href="https://www.facebook.com/your.profile" target="_blank" rel="noopener noreferrer">Facebook &#8599;</a></li>
+          </ul>
+        </section>
+
+        <div class="return-wrap reveal">
+          <button type="button" class="btn btn-lava" data-scroll-target="surface">
+            <span class="btn-arrow up" aria-hidden="true">&#9650;</span> Return to Surface
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Najee M. Ahmad &middot; Grade 12 TVL-3 CSS &middot; Tomas Cabili National High School</p>
+    <p class="footer-note">Built with HTML, CSS and JavaScript. All pixel art is drawn in code.</p>
+  </footer>
+
+  <!-- ====================== PROJECT DETAILS MODAL ====================== -->
+  <dialog id="project-modal" class="modal" aria-labelledby="modal-title">
+    <div class="modal-inner">
+      <button type="button" class="modal-close" id="modal-close" aria-label="Close project details">&times;</button>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
