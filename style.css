@@ -1166,3 +1166,12 @@ html:not(.js) .skill-fill { width: 60%; }
 .toast.show { opacity: 1; visibility: visible; transition: transform .25s steps(4), opacity .2s; }
 .sitter-1 { left: 27%; }
 .sitter-2 { left: 14%; }
+
+/* Kraken pupils (moved by script.js) */
+.kpupil {
+  position: absolute; top: 55.88%; width: 5%; height: 17.65%;
+  background: #1A0500; pointer-events: none;
+  transition: transform .12s steps(3);
+}
+.kpupil.l { left: 22.5%; }
+.kpupil.r { left: 72.5%; }

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>More About Najee | Najee M. Ahmad</title>
+  <meta name="description" content="Background, hobbies and sports of Najee M. Ahmad, Grade 12 Computer Systems Servicing student.">
+  <meta name="theme-color" content="#050B16">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%230B1F33'/%3E%3Crect x='2' y='3' width='4' height='2' fill='%2363D6D0'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="about.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <!-- SONGS: put your audio files in a music/ folder as song-1.mp3, song-2.mp3, song-3.mp3 -->
+  <!-- PHOTOS: put these in the images/ folder (or change the src paths below):
+       about-photo.jpg, hobby-gym.jpg, hobby-running.jpg, hobby-tech.jpg, song-1.jpg..song-3.jpg (covers), sport-1.jpg, sport-2.jpg, sport-3.jpg -->
+  <div class="par" style="--k:.10" aria-hidden="true"><div class="rays"></div></div>
+  <div class="par" style="--k:.22" aria-hidden="true"><div class="fog f1"></div><div class="fog f2"></div></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <canvas id="sea" aria-hidden="true"></canvas>
+
+  <header class="nav">
+    <a class="brand" href="index.html#surface" data-leave>Najee M. Ahmad</a>
+    <a class="btn" href="index.html#surface" data-leave>&#9668; Home</a>
+  </header>
+
+  <main>
+    <div class="intro reveal">
+      <h1>More About Najee</h1>
+      <p>You've swum past the surface. Move your cursor slowly: something is watching.</p>
+    </div>
+
+    <section id="background" class="panel background" aria-labelledby="bg-title">
+      <div class="ph square float reveal">
+        <span>Your photo<br>goes here</span>
+        <img src="images/about-photo.jpg" alt="Portrait of Najee M. Ahmad" width="560" height="560" data-fallback>
+      </div>
+      <div class="reveal">
+        <h2 id="bg-title">My Background</h2>
+        <p>I'm a Grade 12 Computer Systems Servicing student at Tomas Cabili National High School who loves computers and technology and wants to keep learning and improving every day.</p>
+      </div>
+    </section>
+
+    <section id="hobbies" aria-labelledby="hobby-title">
+      <h2 id="hobby-title" class="group reveal">Beyond the Surface: My Hobbies</h2>
+      <div class="grid">
+        <article class="card reveal">
+          <div class="ph"><span>Hobby photo</span><img src="images/hobby-gym.jpg" alt="Najee working out at the gym" width="400" height="300" data-fallback></div>
+          <h3>Going to the Gym</h3>
+          <p>Building strength, developing discipline, and improving myself physically and mentally.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ph"><span>Hobby photo</span><img src="images/hobby-running.jpg" alt="Najee running outdoors" width="400" height="300" data-fallback></div>
+          <h3>Running and Jogging</h3>
+          <p>Improving my endurance, staying active, and challenging myself to become better.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ph"><span>Hobby photo</span><img src="images/hobby-tech.jpg" alt="Najee working with computers" width="400" height="300" data-fallback></div>
+          <h3>Technology and Computers</h3>
+          <p>Exploring how computers work, learning new technical skills, and discovering ways to create useful things with technology.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="sports" aria-labelledby="sport-title">
+      <h2 id="sport-title" class="group reveal">My Sports</h2>
+      <div class="grid">
+        <article class="card sport reveal">
+          <div class="ph"><span>Sport photo</span><img src="images/sport-1.jpg" alt="Najee playing Sport 1 (replace with your sport)" width="400" height="300" data-fallback></div>
+          <h3>Sport 1</h3>
+          <p>[Edit] One sentence about what you enjoy about this sport or what it teaches you.</p>
+        </article>
+        <article class="card sport reveal">
+          <div class="ph"><span>Sport photo</span><img src="images/sport-2.jpg" alt="Najee playing Sport 2 (replace with your sport)" width="400" height="300" data-fallback></div>
+          <h3>Sport 2</h3>
+          <p>[Edit] One sentence about what you enjoy about this sport or what it teaches you.</p>
+        </article>
+        <article class="card sport reveal">
+          <div class="ph"><span>Sport photo</span><img src="images/sport-3.jpg" alt="Najee playing Sport 3 (replace with your sport)" width="400" height="300" data-fallback></div>
+          <h3>Sport 3</h3>
+          <p>[Edit] One sentence about what you enjoy about this sport or what it teaches you.</p>
+        </article>
+      </div>
+    </section>
+    <section id="songs" aria-labelledby="song-title">
+      <h2 id="song-title" class="group reveal">My Favorite Songs</h2>
+      <p class="small-note reveal">Open a box, then press play. Music stays off until you start it.</p>
+      <div class="songs">
+        <article class="song reveal">
+          <button type="button" class="song-head" aria-expanded="false" aria-controls="song-1-panel">
+            <span class="cover"><span>Cover</span><img src="images/song-1.jpg" alt="Album cover for Song 1" width="64" height="64" data-fallback></span>
+            <span class="song-meta"><strong>Song 1</strong><small>Artist 1</small></span>
+            <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+          </button>
+          <div class="song-panel" id="song-1-panel"><div class="song-inner">
+            <div class="ctrls">
+              <button type="button" class="play" aria-label="Play Song 1">&#9654;</button>
+              <input type="range" class="seek" min="0" max="100" value="0" step="0.1" aria-label="Seek Song 1">
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <label class="vol">Volume <input type="range" class="volume" min="0" max="1" step="0.05" value="0.6"></label>
+            <p class="song-note" hidden>Add your audio file at music/song-1.mp3 to play this song.</p>
+          </div></div>
+          <audio preload="none" src="music/song-1.mp3"></audio>
+        </article>
+        <article class="song reveal">
+          <button type="button" class="song-head" aria-expanded="false" aria-controls="song-2-panel">
+            <span class="cover"><span>Cover</span><img src="images/song-2.jpg" alt="Album cover for Song 2" width="64" height="64" data-fallback></span>
+            <span class="song-meta"><strong>Song 2</strong><small>Artist 2</small></span>
+            <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+          </button>
+          <div class="song-panel" id="song-2-panel"><div class="song-inner">
+            <div class="ctrls">
+              <button type="button" class="play" aria-label="Play Song 2">&#9654;</button>
+              <input type="range" class="seek" min="0" max="100" value="0" step="0.1" aria-label="Seek Song 2">
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <label class="vol">Volume <input type="range" class="volume" min="0" max="1" step="0.05" value="0.6"></label>
+            <p class="song-note" hidden>Add your audio file at music/song-2.mp3 to play this song.</p>
+          </div></div>
+          <audio preload="none" src="music/song-2.mp3"></audio>
+        </article>
+        <article class="song reveal">
+          <button type="button" class="song-head" aria-expanded="false" aria-controls="song-3-panel">
+            <span class="cover"><span>Cover</span><img src="images/song-3.jpg" alt="Album cover for Song 3" width="64" height="64" data-fallback></span>
+            <span class="song-meta"><strong>Song 3</strong><small>Artist 3</small></span>
+            <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+          </button>
+          <div class="song-panel" id="song-3-panel"><div class="song-inner">
+            <div class="ctrls">
+              <button type="button" class="play" aria-label="Play Song 3">&#9654;</button>
+              <input type="range" class="seek" min="0" max="100" value="0" step="0.1" aria-label="Seek Song 3">
+              <span class="time">0:00 / 0:00</span>
+            </div>
+            <label class="vol">Volume <input type="range" class="volume" min="0" max="1" step="0.05" value="0.6"></label>
+            <p class="song-note" hidden>Add your audio file at music/song-3.mp3 to play this song.</p>
+          </div></div>
+          <audio preload="none" src="music/song-3.mp3"></audio>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="floor">
+    <a class="btn" href="index.html#surface" data-leave>&#9650; Back to the Surface</a>
+  </footer>
+
+  <script src="about.js"></script>
+</body>
+</html> 
