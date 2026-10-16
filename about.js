@@ -23,6 +23,7 @@
     els.forEach((el) => io.observe(el));
   } else els.forEach((el) => el.classList.add('in'));
 
+<<<<<<< HEAD
   /* ---- Favorite songs: click a box to open its Spotify player ---- */
   const songs = $$('.song');
   function closeSong(card) {
@@ -41,6 +42,45 @@
       card.classList.add('is-open');
       head.setAttribute('aria-expanded', 'true');
     });
+=======
+  /* ---- Favorite songs: click a box to open it and play ---- */
+  const songs = $$('.song');
+  const fmt = (t) => (isFinite(t) ? Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0') : '0:00');
+  songs.forEach((card) => {
+    const head = card.querySelector('.song-head'), audio = card.querySelector('audio');
+    const play = card.querySelector('.play'), seek = card.querySelector('.seek');
+    const time = card.querySelector('.time'), vol = card.querySelector('.volume'), note = card.querySelector('.song-note');
+    const label = card.querySelector('.song-meta strong').textContent;
+    audio.volume = parseFloat(vol.value);
+
+    function setOpen(open) { card.classList.toggle('is-open', open); head.setAttribute('aria-expanded', String(open)); }
+    function paint() {
+      const d = audio.duration;
+      seek.value = isFinite(d) && d > 0 ? (audio.currentTime / d) * 100 : 0;
+      time.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    }
+    function toggle() { if (audio.paused) audio.play().catch(() => {}); else audio.pause(); }
+
+    head.addEventListener('click', () => {
+      const open = !card.classList.contains('is-open');
+      songs.forEach((o) => { if (o !== card && o.classList.contains('is-open')) o.querySelector('.song-head').click(); });
+      setOpen(open);
+      if (open) audio.play().catch(() => {}); else audio.pause();
+    });
+    play.addEventListener('click', toggle);
+    audio.addEventListener('play', () => {
+      songs.forEach((o) => { if (o !== card) o.querySelector('audio').pause(); });
+      card.classList.add('is-playing'); play.innerHTML = '&#10074;&#10074;'; play.setAttribute('aria-label', 'Pause ' + label);
+    });
+    const stopped = () => { card.classList.remove('is-playing'); play.innerHTML = '&#9654;'; play.setAttribute('aria-label', 'Play ' + label); };
+    audio.addEventListener('pause', stopped);
+    audio.addEventListener('ended', stopped);
+    audio.addEventListener('timeupdate', paint);
+    audio.addEventListener('loadedmetadata', paint);
+    audio.addEventListener('error', () => { note.hidden = false; stopped(); });
+    seek.addEventListener('input', () => { if (isFinite(audio.duration)) audio.currentTime = (seek.value / 100) * audio.duration; });
+    vol.addEventListener('input', () => { audio.volume = parseFloat(vol.value); });
+>>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
   });
 
   /* ---- Fish cursor (same as the main page; mouse users only) ---- */

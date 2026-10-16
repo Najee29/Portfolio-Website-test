@@ -165,6 +165,7 @@ h3 { font: 400 .75rem/1.7 var(--px); color: var(--bio); margin: 1rem 0 .5rem; }
 .vol { display: flex; align-items: center; gap: .6rem; margin: 0 1rem 1rem; font-size: .8rem; opacity: .9; }
 .vol input { flex: 1; accent-color: var(--turq); cursor: pointer; }
 .song-note { margin: 0 1rem 1rem; font-size: .85rem; color: var(--gold); }
+<<<<<<< HEAD
 @keyframes eq { to { transform: scaleY(1); } }
 
 /* Spotify embed */
@@ -181,3 +182,6 @@ h3 { font: 400 .75rem/1.7 var(--px); color: var(--bio); margin: 1rem 0 .5rem; }
 
 /* Make the ocean floor span the full screen width */
 .floor { width: 100vw; margin-left: calc(50% - 50vw); }
+=======
+@keyframes eq { to { transform: scaleY(1); } }
+>>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
