@@ -82,7 +82,7 @@
     [[20, 3], [24, 4], [17, 5], [28, 6], [13, 6], [31, 8]].forEach((p) => { put(g, p[0], p[1], 'd'); put(g, p[0] + 1, p[1], 'd'); });
     span(g, 8, 6, 14, 'd'); span(g, 8, 26, 34, 'd');
     for (let y = 9; y <= 12; y++) { span(g, y, 7, 13, 'e'); span(g, y, 27, 33, 'e'); }
-    for (let y = 10; y <= 12; y++) { span(g, y, 9, 11, 'p'); span(g, y, 29, 31, 'p'); }
+    
     span(g, 14, 17, 23, 'd');
     [[3, 8], [11, 15], [25, 29], [32, 37]].forEach((r) => span(g, 15, r[0], r[1], 'k'));
     [[3, 6], [12, 14], [26, 28], [33, 36]].forEach((r) => span(g, 16, r[0], r[1], 'k'));
@@ -992,9 +992,38 @@
     }
   }
 
+  /* ------------------------ KRAKEN PUPILS FOLLOW THE CURSOR -------------- */
+  function initKrakenPupils() {
+    const head = $('.kraken-head');
+    if (!head) return;
+    const pupils = ['l', 'r'].map((side) => {
+      const p = document.createElement('i');
+      p.className = 'kpupil ' + side;
+      head.appendChild(p);
+      return p;
+    });
+    let px = null, py = null, queued = false;
+    function aim() {
+      queued = false;
+      const r = head.getBoundingClientRect();
+      if (px === null || r.bottom < 0 || r.top > window.innerHeight) return;
+      const cell = r.width / 40;
+      pupils.forEach((p, i) => {
+        const cx = r.left + r.width * (i ? 0.75 : 0.25), cy = r.top + r.height * (11 / 17);
+        const nx = clamp((px - cx) / 220, -1, 1), ny = clamp((py - cy) / 220, -1, 1);
+        p.style.transform = 'translate(' + (Math.round(nx * 2) * cell).toFixed(1) + 'px,' +
+          (Math.round(ny) * 0.5 * cell).toFixed(1) + 'px)';
+      });
+    }
+    const request = () => { if (!queued) { queued = true; window.requestAnimationFrame(aim); } };
+    window.addEventListener('pointermove', (e) => { px = e.clientX; py = e.clientY; request(); }, { passive: true });
+    window.addEventListener('scroll', request, { passive: true });
+  }
+
   /* ------------------------------- START UP ------------------------------ */
   function init() {
     mountSprites(document);
+    initKrakenPupils();
     buildClouds();
     buildReef();
     $$('[data-field]').forEach(spawnField);
