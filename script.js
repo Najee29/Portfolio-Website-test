@@ -277,6 +277,97 @@
   SPRITES.palm = palmSprite();
   SPRITES.seaweed = seaweedSprite();
 
+  /* ---- Update 2 sprites: boys, anglerfish, sport icons ---- */
+  function anglerSprite() {
+    const W = 46, H = 28;
+    const g = makeGrid(W, H);
+    const cx = 22, cy = 16, rx = 17, ry = 9;
+    for (let y = 0; y < H; y++) {
+      for (let x = 0; x < W; x++) {
+        const d = Math.pow((x - cx) / rx, 2) + Math.pow((y - cy) / ry, 2);
+        if (d <= 1) put(g, x, y, y > cy + 3 ? 'l' : 'b');
+        else if (d <= 1.14 && y <= cy) put(g, x, y, 'd');
+      }
+    }
+    // tail
+    for (let i = 0; i < 9; i++) { span(g, cy - 4 + Math.round(i * 0.5), 5 - Math.floor(i / 2), 8, 'f'); span(g, cy + 4 - Math.round(i * 0.5), 5 - Math.floor(i / 2), 8, 'f'); }
+    span(g, cy - 1, 0, 8, 'f'); span(g, cy, 0, 8, 'f'); span(g, cy + 1, 0, 8, 'f');
+    // dorsal and pectoral fins
+    for (let i = 0; i < 6; i++) span(g, 6 + i, 15 + i, 24 - i, 'f');
+    for (let i = 0; i < 5; i++) span(g, cy + 5 + i, 18 - i, 24, 'f');
+    // mouth: dark gap with teeth along the front
+    for (let y = cy + 1; y <= cy + 4; y++) span(g, y, 33, 40, 'm');
+    for (let x = 33; x <= 39; x += 3) { put(g, x, cy + 1, 't'); put(g, x, cy + 2, 't'); }
+    for (let x = 34; x <= 40; x += 3) { put(g, x, cy + 4, 't'); put(g, x, cy + 3, 't'); }
+    // eye
+    span(g, cy - 4, 31, 35, 'e'); span(g, cy - 3, 31, 35, 'e'); put(g, 34, cy - 3, 'k'); put(g, 33, cy - 3, 'k');
+    // stalk (esca) arching over the mouth, with lure at the tip
+    const stalk = [[27, 8], [28, 6], [29, 5], [31, 4], [33, 3], [35, 3], [37, 3], [38, 4], [38, 5], [38, 6]];
+    stalk.forEach((p) => put(g, p[0], p[1], 's'));
+    span(g, 7, 37, 41, 'g'); span(g, 8, 37, 41, 'g'); span(g, 9, 38, 40, 'g');
+    put(g, 38, 7, 'G'); put(g, 39, 8, 'G');
+    return { rows: gridRows(g), pal: { b: '#3A5070', d: '#1B2A40', l: '#53708F', f: '#243650', m: '#06101C', t: '#E8F4FF', e: '#CFF8FF', k: '#04101A', s: '#2A3C57', g: '#7FF5FF', G: '#FFFFFF' } };
+  }
+  SPRITES.angler = anglerSprite();
+
+  SPRITES['boy-swim'] = {
+    rows: [
+      '....hhhhh.....',
+      '...hhhhhhh..ss',
+      '...sssssss..ss',
+      '...sssskss..s.',
+      '...sssssss.ss.',
+      '....sss.ssss..',
+      '..ssssssssss..',
+      'wwwwwwwwwwwwww',
+      '.wwwwwwwwwwww.'
+    ],
+    pal: { s: '#E8B07A', h: '#2B1B12', k: '#0B1F33', w: '#63D6D0' }
+  };
+  SPRITES['boy-sit'] = {
+    rows: [
+      '....hhhhh....',
+      '...hhhhhhh...',
+      '...sssssss...',
+      '...ssssskss..',
+      '...sssssss...',
+      '....sss......',
+      '..ttttttt....',
+      '.sttttttttss.',
+      's.ttttttttss.',
+      '..bbbbbbbbbs.',
+      '..bbbbbbbbbs.',
+      '..sss.....sss',
+      '..ss......sss'
+    ],
+    pal: { s: '#E8B07A', h: '#2B1B12', k: '#0B1F33', t: '#FF6B4A', b: '#4FA3FF' }
+  };
+  SPRITES['boy-lie'] = {
+    rows: [
+      '................hhhh.',
+      '...............hhhhhh',
+      '...............ssskss',
+      '...ttttttt...ssssssss',
+      'bbbtttttttttsssss....',
+      'bbbbbtttttttss.......',
+      'sbbb.................',
+      'ss...................'
+    ],
+    pal: { s: '#C98F5A', h: '#1A110C', k: '#0B1F33', t: '#FFD93D', b: '#7C8CFF' }
+  };
+  SPRITES['icon-ball'] = {
+    rows: ['..oooooo..', '.ooonoooo.', 'oonnnnnnoo', 'ooooNooooo', 'oonnnnnnoo', 'oooonoooo.', '.ooonoooo.', '..oooooo..'].map(function (r) { return r.replace('N', 'n'); }),
+    pal: { o: '#FF9F43', n: '#0B1F33' }
+  };
+  SPRITES['icon-shoe'] = {
+    rows: ['.....cc.....', '....cccc....', '....cccc....', '...cccccc...', 'ccccccccccc.', 'cwwwwwwwwwwc', 'wwwwwwwwwwww'],
+    pal: { c: '#63D6D0', w: '#FFFFF0' }
+  };
+  SPRITES['icon-dumbbell'] = {
+    rows: ['cc......cc', 'cc......cc', 'ccgggggcc.', 'ccgggggcc.', 'cc......cc', 'cc......cc'].map(function (r) { return r.slice(0, 10); }),
+    pal: { c: '#63D6D0', g: '#FFFFF0' }
+  };
+
   const PALETTES = {
     turq:   { b: '#63D6D0', l: '#D8FFFC', f: '#20B2AA' },
     orange: { b: '#FF9F43', l: '#FFD9A0', f: '#E8742A' },
@@ -290,7 +381,12 @@
     coralPurple: { p: '#B47CFF', q: '#E0C8FF' },
     jellyCyan:   { c: '#7FF5FF', g: '#E6FFFF' },
     jellyPink:   { c: '#FF9BD2', g: '#FFE0F1' },
-    jellyViolet: { c: '#B9A2FF', g: '#EEE6FF' }
+    jellyViolet: { c: '#B9A2FF', g: '#EEE6FF' },
+    boyA: { s: '#E8B07A', h: '#2B1B12', w: '#63D6D0' },
+    boyB: { s: '#C98F5A', h: '#6B3A1E', w: '#8CE8E3' },
+    boyC: { s: '#F1C9A0', h: '#E3A91A', w: '#63D6D0' },
+    boyD: { s: '#D9A06A', h: '#1A110C', t: '#4CC27A', b: '#FFD93D' },
+    boyE: { s: '#B77C4A', h: '#0E0A08', t: '#FF7F9F', b: '#2C6FD6' }
   };
 
   const spriteCache = new Map();
@@ -336,6 +432,7 @@
     'fish-far': { count: 7, kind: 'fish',  w: [26, 40],   top: [6, 68],  dur: [70, 110],  op: [0.45, 0.65], palettes: ['turq', 'blue', 'yellow'] },
     'fish-mid': { count: 6, kind: 'fish',  w: [46, 72],   top: [10, 72], dur: [45, 70],   op: [0.9, 1],     palettes: ['orange', 'yellow', 'pink', 'blue', 'green'] },
     'sharks':   { count: 3, kind: 'shark', w: [320, 460], top: [6, 62],  dur: [110, 170], op: [0.55, 0.75] },
+    'anglers':  { count: 6, kind: 'angler', w: [150, 340], top: [6, 84], dur: [55, 130], op: [0.55, 0.95] },
     'jellies':  { count: 8, kind: 'jelly', w: [34, 74],   top: [4, 84],  dur: [14, 26],   op: [0.75, 0.95], palettes: ['jellyCyan', 'jellyPink', 'jellyViolet'] }
   };
 
@@ -354,8 +451,12 @@
         's;--delay:-' + rand(0, dur).toFixed(1) + 's;top:' + rand(cfg.top[0], cfg.top[1]).toFixed(1) +
         '%;opacity:' + rand(cfg.op[0], cfg.op[1]).toFixed(2) + ';';
       const pal = cfg.palettes ? pick(cfg.palettes) : undefined;
+      let art = renderSprite(cfg.kind, pal);
+      if (cfg.kind === 'angler') {
+        art = '<span class="angler-wrap">' + art + '<i class="lure-glow"></i></span>';
+      }
       el.innerHTML = '<div class="bob" style="--bob:' + rand(2.5, 5).toFixed(1) + 's;--bob-delay:-' +
-        rand(0, 4).toFixed(1) + 's">' + renderSprite(cfg.kind, pal) + '</div>';
+        rand(0, 4).toFixed(1) + 's">' + art + '</div>';
       frag.appendChild(el);
     }
     field.appendChild(frag);
@@ -488,7 +589,7 @@
     el: el,
     zone: zones.indexOf(el.closest('.zone')),
     speed: parseFloat(el.dataset.speed) || 0
-  }));
+  })).filter((l) => l.zone >= 0);
   const progressBar = $('#progress-bar');
   const gaugeFill = $('#gauge-fill');
   const gaugeMarker = $('#gauge-marker');
@@ -726,6 +827,171 @@
     });
   }
 
+  /* ------------------------- 10. SKILL BARS (UPDATE 2) -------------------- */
+  function initSkillBars() {
+    const bars = $$('.skill-bar');
+    if (!bars.length) return;
+
+    function fill(bar) {
+      const level = clamp(parseFloat(bar.dataset.level) || 0, 0, 100);
+      const fillEl = $('.skill-fill', bar);
+      const label = bar.closest('.skill').querySelector('[data-pct]');
+      bar.setAttribute('aria-valuenow', String(Math.round(level)));
+      if (fillEl) fillEl.style.width = level + '%';
+      if (!label) return;
+      if (reducedMotion()) { label.textContent = Math.round(level) + '%'; return; }
+      const start = performance.now(), dur = 1400;
+      (function tick(now) {
+        const t = clamp((now - start) / dur);
+        const eased = 1 - Math.pow(1 - t, 3);
+        label.textContent = Math.round(level * eased) + '%';
+        if (t < 1) window.requestAnimationFrame(tick);
+      })(start);
+    }
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { fill(e.target); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.4 });
+      bars.forEach((b) => io.observe(b));
+    } else {
+      bars.forEach(fill);
+    }
+  }
+
+  /* ------------------------- 11. FISH CURSOR (UPDATE 2) ------------------- */
+  function initFishCursor() {
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+    if (!fine.matches) return; // touch devices keep the normal cursor
+
+    const fish = document.createElement('div');
+    fish.className = 'fish-cursor';
+    fish.setAttribute('aria-hidden', 'true');
+    fish.innerHTML = '<div class="fish-flip"><div class="fish-bob">' +
+      '<i class="fish-tail"></i><i class="fish-body"></i><i class="fish-fin"></i></div></div>';
+    document.body.appendChild(fish);
+    document.documentElement.classList.add('has-fish');
+
+    let tx = -100, ty = -100, x = -100, y = -100, facingLeft = false, seen = false, raf = 0;
+    const ease = reducedMotion() ? 1 : 0.18;
+
+    function frame() {
+      raf = 0;
+      const dx = tx - x;
+      x += dx * ease;
+      y += (ty - y) * ease;
+      if (Math.abs(dx) > 1.5) {
+        const left = dx < 0;
+        if (left !== facingLeft) { facingLeft = left; fish.classList.toggle('face-left', left); }
+      }
+      fish.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+      if (Math.abs(tx - x) > 0.3 || Math.abs(ty - y) > 0.3) raf = window.requestAnimationFrame(frame);
+    }
+    function kick() { if (!raf) raf = window.requestAnimationFrame(frame); }
+
+    window.addEventListener('mousemove', (e) => {
+      tx = e.clientX; ty = e.clientY;
+      if (!seen) { seen = true; x = tx; y = ty; fish.classList.add('is-on'); }
+      kick();
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => fish.classList.remove('is-on'));
+    document.addEventListener('mouseenter', () => { if (seen) fish.classList.add('is-on'); });
+
+    // If the device switches to touch, restore the normal cursor
+    const off = () => {
+      if (fine.matches) return;
+      document.documentElement.classList.remove('has-fish');
+      fish.remove();
+    };
+    if (fine.addEventListener) fine.addEventListener('change', off);
+  }
+
+  /* ------------------------ 12. MORE ABOUT ME PAGE (UPDATE 2) ------------- */
+  function initAboutPage() {
+    const page = $('#about-page');
+    const scroller = $('#about-scroll');
+    const openBtn = $('#open-about');
+    if (!page || !scroller || !openBtn) return;
+    const closeBtns = [$('#about-back'), $('#about-back-2')].filter(Boolean);
+    let revealIO = null;
+
+    function observeReveals() {
+      const els = $$('.reveal', page);
+      els.forEach((el) => el.classList.remove('is-visible'));
+      if (revealIO) revealIO.disconnect();
+      if ('IntersectionObserver' in window && !reducedMotion()) {
+        revealIO = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) { e.target.classList.add('is-visible'); revealIO.unobserve(e.target); }
+          });
+        }, { root: scroller, threshold: 0.12 });
+        els.forEach((el) => revealIO.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('is-visible'));
+      }
+    }
+
+    function open() {
+      page.hidden = false;
+      document.body.classList.add('modal-open');
+      scroller.scrollTop = 0;
+      observeReveals();
+      window.requestAnimationFrame(() => {
+        page.classList.add('is-open');
+        scroller.focus({ preventScroll: true });
+      });
+      openBtn.setAttribute('aria-expanded', 'true');
+    }
+    function close() {
+      page.classList.remove('is-open');
+      document.body.classList.remove('modal-open');
+      openBtn.setAttribute('aria-expanded', 'false');
+      window.setTimeout(() => { if (!page.classList.contains('is-open')) page.hidden = true; }, reducedMotion() ? 0 : 480);
+      openBtn.focus({ preventScroll: true });
+    }
+
+    openBtn.addEventListener('click', open);
+    closeBtns.forEach((b) => b.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && page.classList.contains('is-open')) close();
+    });
+
+    // Keep keyboard focus inside the page while it is open
+    page.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const f = $$('button, a[href]', page).filter((n) => n.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    // Gentle parallax for the creature layer while scrolling the page
+    const layer = $('.layer', page);
+    if (layer && !reducedMotion()) {
+      scroller.addEventListener('scroll', () => {
+        layer.style.transform = 'translate3d(0,' + (-scroller.scrollTop * 0.08).toFixed(1) + 'px,0)';
+      }, { passive: true });
+    }
+
+    // Bubbles for the page (reuses the .bubble style)
+    const box = $('#about-bubbles');
+    if (box) {
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i < 16; i++) {
+        const b = document.createElement('span');
+        b.className = 'bubble';
+        b.style.cssText = 'left:' + rand(0, 100).toFixed(1) + '%;--s:' + pick([6, 8, 10, 14]) +
+          'px;--dur:' + rand(12, 24).toFixed(1) + 's;--delay:-' + rand(0, 24).toFixed(1) +
+          's;--sway:' + rand(-30, 30).toFixed(0) + 'px;';
+        frag.appendChild(b);
+      }
+      box.appendChild(frag);
+    }
+  }
+
   /* ------------------------------- START UP ------------------------------ */
   function init() {
     mountSprites(document);
@@ -741,6 +1007,9 @@
     initModal();
     initCopyEmail();
     wireImages(document);
+    initSkillBars();
+    initFishCursor();
+    initAboutPage();
 
     const year = $('#year');
     if (year) year.textContent = new Date().getFullYear();

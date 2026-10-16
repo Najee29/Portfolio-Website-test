@@ -27,7 +27,7 @@
   3. Anything in [square brackets] is a placeholder: search for "[" and replace it.
   4. Address: find the row marked "OPTIONAL ADDRESS" in the hero and remove the
      word  hidden  from it if you want to show it.
-  5. Hobbies / skills: edit the text inside each <article class="card">.
+  5. skills: edit the text inside each <article class="card">.
      Proficiency dots: change  data-level="3"  (0 to 5).
   6. Projects: edit each project card AND its matching <div class="project-details">.
   7. Links: replace the example GitHub / LinkedIn / Facebook / email addresses.
@@ -48,7 +48,7 @@
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#surface"  data-scroll data-zone-link="surface"><span class="n">01</span>Surface</a></li>
         <li><a href="#shallows" data-scroll data-zone-link="shallows"><span class="n">02</span>Shallows</a></li>
-        <li><a href="#abyss"    data-scroll data-zone-link="abyss"><span class="n">03</span>Abyss</a></li>
+        <li><a href="#abyss" data-scroll data-zone-link="abyss"><span class="n">03</span>Abyss</a></li>
         <li><a href="#depths"   data-scroll data-zone-link="depths"><span class="n">04</span>Depths</a></li>
       </ul>
 
@@ -97,6 +97,15 @@
         <div class="palm palm-b" data-sprite="palm"></div>
         <div class="shore-critter crab" data-sprite="crab"></div>
         <div class="shore-critter starfish" data-sprite="starfish"></div>
+
+        <!-- Exactly five boys: 3 swimming, 2 relaxing on the sand -->
+        <div class="boys" aria-hidden="true">
+          <div class="swimmer swimmer-1"><span class="ripple"></span><span class="boy" data-sprite="boy-swim" data-palette="boyA"></span><i class="splash"></i></div>
+          <div class="swimmer swimmer-2"><span class="ripple"></span><span class="boy" data-sprite="boy-swim" data-palette="boyB"></span><i class="splash"></i></div>
+          <div class="swimmer swimmer-3"><span class="ripple"></span><span class="boy" data-sprite="boy-swim" data-palette="boyC"></span><i class="splash"></i></div>
+          <div class="sitter sitter-1"><span class="boy" data-sprite="boy-sit" data-palette="boyD"></span></div>
+          <div class="sitter sitter-2"><span class="boy" data-sprite="boy-lie" data-palette="boyE"></span></div>
+        </div>
       </div>
 
       <div class="zone-content hero-grid">
@@ -115,7 +124,7 @@
           <p class="hero-role">Computer Systems Servicing student</p>
 
           <dl class="facts">
-            <div class="fact"><dt>Age</dt><dd>[Insert age]</dd></div>
+            <div class="fact"><dt>Age</dt><dd>17</dd></div>
             <div class="fact"><dt>Grade &amp; Strand</dt><dd>Grade 12 &middot; TVL-3 CSS</dd></div>
             <div class="fact"><dt>School</dt><dd>Tomas Cabili National High School</dd></div>
             <!-- OPTIONAL ADDRESS: remove the word "hidden" below only if you choose to share it -->
@@ -123,23 +132,28 @@
           </dl>
 
           <blockquote class="motto">
-            <p>&ldquo;[Your personal motto goes here]&rdquo;</p>
+            <p>&ldquo;Become, don&rsquo;t perform.&rdquo;</p>
           </blockquote>
 
           <p class="intro">
             Hello! I'm Najee, a Grade 12 student taking Computer Systems Servicing (CSS) at Tomas Cabili
             National High School. I like finding out how computers work, from the hardware inside the case to
-            the websites on the screen. [Replace this paragraph with your own short introduction.]
+            the websites on the screen. I'm always looking for opportunities to learn new skills, improve my technical knowledge, and challenge myself to grow. I believe that progress comes from consistency, curiosity, and the willingness to learn from mistakes. My goal is to continue developing my abilities, explore new possibilities in technology, and become a better version of myself every day.
           </p>
 
-          <button type="button" class="btn btn-primary" data-scroll-target="shallows">
-            Dive Into My World <span class="btn-arrow" aria-hidden="true">&#9660;</span>
-          </button>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary btn-wave" data-scroll-target="shallows">
+              Dive Into My World <span class="btn-arrow" aria-hidden="true">&#9660;</span>
+            </button>
+            <button type="button" class="btn btn-secondary btn-wave" id="open-about" aria-controls="about-page" aria-expanded="false">
+              More About Me <span class="btn-arrow side" aria-hidden="true">&#9658;</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================== 02 THE SHALLOWS : HOBBIES AND SKILLS ================== -->
+    <!-- ================== 02 THE SHALLOWS : SKILLS ================== -->
     <section id="shallows" class="zone zone-shallows" aria-labelledby="shallows-title">
       <div class="scene scene-shallows" aria-hidden="true">
         <div class="rays rays-a"></div>
@@ -154,7 +168,7 @@
         <header class="section-head panel reveal">
           <p class="eyebrow">Zone 02 &middot; 10&ndash;200 m</p>
           <h2 id="shallows-title" class="zone-title">The Shallows</h2>
-          <p>Hobbies and skills live where the light is brightest. Click or tap any card to reveal more.</p>
+          <p>Skills live where the light is brightest. Click or tap any card to reveal more.</p>
         </header>
 
         <h3 class="group-title reveal">Skills</h3>
@@ -165,8 +179,8 @@
             <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-html">HTML &amp; CSS</button></h4>
             <p class="card-teaser">Building and styling web pages.</p>
             <div class="card-more" id="more-html"><div class="card-more-inner">
-              <p>[Edit] I write semantic HTML and responsive CSS layouts. Add the pages, projects or practice work you have built.</p>
-              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
+              <p>Creating and styling websites with clean layouts, responsive designs, and organized content.
+              <div class="meter-row"><span class="meter-label">Proficiency</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
             </div></div>
           </article>
 
@@ -175,8 +189,8 @@
             <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-js">JavaScript</button></h4>
             <p class="card-teaser">Making pages interactive.</p>
             <div class="card-more" id="more-js"><div class="card-more-inner">
-              <p>[Edit] Describe what you can do with JavaScript: menus, modals, small games, form checks, and so on.</p>
-              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="2" role="img" aria-label="Proficiency: 2 out of 5"></span></div>
+              <p>Adding interactive features and dynamic behavior to websites.
+              <div class="meter-row"><span class="meter-label">Proficiency</span><span class="meter" data-level="2" role="img" aria-label="Proficiency: 2 out of 5"></span></div>
             </div></div>
           </article>
 
@@ -185,8 +199,8 @@
             <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-hw">Computer Hardware</button></h4>
             <p class="card-teaser">Parts, assembly and upkeep.</p>
             <div class="card-more" id="more-hw"><div class="card-more-inner">
-              <p>[Edit] Mention the hardware tasks you practice: identifying components, assembling a PC, upgrading RAM or storage, safe handling.</p>
-              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="4" role="img" aria-label="Proficiency: 4 out of 5"></span></div>
+              <p>Understanding computer components, assembling PCs, and performing basic hardware maintenance.
+              <div class="meter-row"><span class="meter-label">Proficiency</span><span class="meter" data-level="4" role="img" aria-label="Proficiency: 4 out of 5"></span></div>
             </div></div>
           </article>
 
@@ -195,8 +209,8 @@
             <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-ts">Troubleshooting</button></h4>
             <p class="card-teaser">Finding and fixing computer problems.</p>
             <div class="card-more" id="more-ts"><div class="card-more-inner">
-              <p>[Edit] Explain how you diagnose problems step by step, such as a PC that won't boot or a slow system, and how you document the fix.</p>
-              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
+              <p>Identifying computer problems, diagnosing their causes, and finding effective solutions.
+              <div class="meter-row"><span class="meter-label">Proficiency</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
             </div></div>
           </article>
 
@@ -205,59 +219,11 @@
             <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-net">Networking</button></h4>
             <p class="card-teaser">Connecting computers together.</p>
             <div class="card-more" id="more-net"><div class="card-more-inner">
-              <p>[Edit] Share what you know about LAN setup, cabling, IP addressing or configuring a router or switch.</p>
-              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
+              <p>Connecting computers and configuring networks to enable communication and resource sharing.
+              <div class="meter-row"><span class="meter-label">Proficiency</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
             </div></div>
           </article>
 
-          <article class="card reveal">
-            <div class="card-icon" data-sprite="crab" aria-hidden="true"></div>
-            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-other">Other Skill [Edit]</button></h4>
-            <p class="card-teaser">Add another skill you really have.</p>
-            <div class="card-more" id="more-other"><div class="card-more-inner">
-              <p>[Edit] For example: office software, video editing, teamwork, or communication. Delete this card if you don't need it.</p>
-              <div class="meter-row"><span class="meter-label">Proficiency [edit]</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
-            </div></div>
-          </article>
-        </div>
-
-        <h3 class="group-title reveal">Hobbies</h3>
-        <div class="card-grid" data-stagger>
-
-          <article class="card reveal">
-            <div class="card-icon" data-sprite="icon-gamepad" aria-hidden="true"></div>
-            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-h1">Gaming [Edit]</button></h4>
-            <p class="card-teaser">Replace with your own hobby.</p>
-            <div class="card-more" id="more-h1"><div class="card-more-inner">
-              <p>[Edit] Tell visitors what you enjoy about this hobby and what it has taught you.</p>
-            </div></div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-icon" data-sprite="icon-headphones" aria-hidden="true"></div>
-            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-h2">Music [Edit]</button></h4>
-            <p class="card-teaser">Replace with your own hobby.</p>
-            <div class="card-more" id="more-h2"><div class="card-more-inner">
-              <p>[Edit] Mention the kinds of music you like, instruments you play, or playlists you make.</p>
-            </div></div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-icon" data-sprite="icon-palette" aria-hidden="true"></div>
-            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-h3">Digital Art &amp; Design [Edit]</button></h4>
-            <p class="card-teaser">Replace with your own hobby.</p>
-            <div class="card-more" id="more-h3"><div class="card-more-inner">
-              <p>[Edit] Describe the art, design or editing you do and the tools you use.</p>
-            </div></div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-icon" data-sprite="starfish" aria-hidden="true"></div>
-            <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-h4">Your Hobby Here</button></h4>
-            <p class="card-teaser">Add one more favorite activity.</p>
-            <div class="card-more" id="more-h4"><div class="card-more-inner">
-              <p>[Edit] Sports, reading, cooking, travelling... anything that tells visitors who you are.</p>
-            </div></div>
           </article>
         </div>
       </div>

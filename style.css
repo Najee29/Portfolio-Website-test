@@ -899,3 +899,270 @@ html:not(.js) .nav-menu { position: static; opacity: 1; visibility: visible; tra
   .particle { opacity: .6; }
   .card-more { transition: none; }
 }
+
+/* ==========================================================================
+   UPDATE 2 : hero buttons, skill bars, fish cursor, boys, About page
+   ========================================================================== */
+
+/* ---- Hero buttons ---- */
+.hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+.btn-wave { position: relative; overflow: hidden; isolation: isolate; }
+.btn-wave::before {
+  content: ""; position: absolute; inset: auto -10% -120% -10%; height: 220%; z-index: -1;
+  background: radial-gradient(ellipse at 50% 0, rgba(255, 255, 240, .55), transparent 60%);
+  transition: transform .45s ease;
+}
+.btn-wave:hover::before { transform: translateY(-62%); }
+.btn-secondary { background: var(--navy); color: var(--ivory); --bc: var(--teal); }
+.btn-secondary:hover { background: var(--deep); }
+.btn-arrow.side { animation-name: nudgeSide; }
+@keyframes nudgeSide { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+@media (max-width: 560px) {
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+}
+
+/* ---- Skills (Shallows) ---- */
+.skills-note { max-width: 62ch; font-size: .9rem; opacity: .85; }
+.skills-note code { padding: 0 .3rem; background: rgba(5, 11, 22, .6); color: var(--turq); }
+.skill-list {
+  display: grid; gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+}
+.skill {
+  --bc: var(--teal);
+  display: flex; gap: 1.1rem; align-items: flex-start;
+  padding: 1.2rem 1.3rem;
+  background: linear-gradient(135deg, rgba(5, 11, 22, .9), rgba(18, 59, 88, .82));
+  border-radius: 6px;
+  box-shadow: 0 0 0 3px var(--bc), 8px 8px 0 0 rgba(0, 0, 0, .3), 0 0 22px rgba(32, 178, 170, .14);
+}
+.skill-icon { flex: none; width: 56px; height: 56px; display: grid; place-items: center; background: rgba(99, 214, 208, .12); border-radius: 4px; }
+.skill-icon svg { width: 40px; height: 40px; }
+.skill-main { flex: 1; min-width: 0; }
+.skill-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: .6rem; }
+.skill-name { margin: 0; font-family: var(--font-pixel); font-size: .7rem; line-height: 1.6; }
+.skill-pct { font-family: var(--font-pixel); font-size: .68rem; color: var(--gold); }
+.skill-bar {
+  position: relative; height: 16px; overflow: hidden; border-radius: 8px;
+  background: rgba(255, 255, 240, .1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, .5);
+}
+.skill-fill {
+  display: block; height: 100%; width: 0; border-radius: 8px;
+  background: linear-gradient(90deg, #138a84, var(--teal) 55%, var(--turq));
+  box-shadow: 0 0 10px rgba(99, 214, 208, .55);
+  transition: width 1.4s cubic-bezier(.2, .8, .2, 1);
+  position: relative; overflow: hidden;
+}
+.skill-fill::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 240, .45) 50%, transparent 70%);
+  transform: translateX(-100%); animation: barShine 3.6s ease-in-out infinite 1.6s;
+}
+@keyframes barShine { 0% { transform: translateX(-100%); } 60%, 100% { transform: translateX(100%); } }
+.skill-desc { margin: .7rem 0 0; font-size: .9rem; opacity: .9; }
+html:not(.js) .skill-fill { width: 60%; }
+
+/* ---- Fish cursor (desktop / fine pointers only) ---- */
+.fish-cursor { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  html.has-fish, html.has-fish * { cursor: none !important; }
+  .fish-cursor {
+    display: block; position: fixed; left: 0; top: 0; z-index: 9999;
+    width: 46px; height: 28px; margin: -14px 0 0 -23px;
+    pointer-events: none; opacity: 0; transition: opacity .25s;
+    will-change: transform;
+  }
+  .fish-cursor.is-on { opacity: 1; }
+  .fish-flip { position: absolute; inset: 0; transition: transform .22s ease; }
+  .fish-cursor.face-left .fish-flip { transform: scaleX(-1); }
+  .fish-bob { position: absolute; inset: 0; animation: fishBob 1.6s ease-in-out infinite alternate; filter: drop-shadow(0 0 5px rgba(99, 214, 208, .55)); }
+  .fish-body {
+    position: absolute; left: 12px; top: 2px; width: 32px; height: 24px;
+    background: radial-gradient(ellipse at 62% 30%, #A8FFF8 0, var(--turq) 38%, var(--teal) 100%);
+    border-radius: 60% 48% 48% 60% / 55% 50% 50% 55%;
+    box-shadow: inset 0 -5px 0 rgba(8, 90, 96, .55);
+  }
+  .fish-body::before { /* belly stripe */
+    content: ""; position: absolute; left: 6px; right: 5px; bottom: 5px; height: 4px; border-radius: 4px;
+    background: rgba(255, 255, 240, .75);
+  }
+  .fish-body::after { /* eye */
+    content: ""; position: absolute; right: 6px; top: 6px; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--ivory); box-shadow: inset -2px 0 0 var(--navy);
+  }
+  .fish-fin {
+    position: absolute; left: 20px; top: -2px; width: 12px; height: 9px;
+    background: var(--teal); border-radius: 80% 80% 0 0; transform-origin: 50% 100%;
+    animation: finFlap .5s ease-in-out infinite alternate;
+  }
+  .fish-tail {
+    position: absolute; left: 0; top: 4px; width: 17px; height: 20px;
+    background: linear-gradient(90deg, #138a84, var(--teal));
+    clip-path: polygon(0 0, 100% 40%, 100% 60%, 0 100%, 26% 50%);
+    transform-origin: 100% 50%; animation: tailSwish .38s ease-in-out infinite alternate;
+  }
+}
+@keyframes tailSwish { from { transform: rotate(-24deg); } to { transform: rotate(24deg); } }
+@keyframes finFlap { from { transform: rotate(-12deg); } to { transform: rotate(14deg); } }
+@keyframes fishBob { from { transform: translateY(-2px); } to { transform: translateY(2px); } }
+@media (prefers-reduced-motion: reduce) {
+  .fish-bob, .fish-fin, .fish-tail { animation: none !important; }
+}
+
+/* ---- Surface: five boys (3 swimming, 2 on the sand) ---- */
+.boys { position: absolute; inset: 0; pointer-events: none; }
+.boy { display: block; }
+.boy svg { display: block; width: 100%; height: auto; }
+.swimmer { position: absolute; width: clamp(40px, 5vw, 70px); }
+.swimmer .boy { animation: swimBob 2.6s ease-in-out infinite alternate; }
+.swimmer-1 { right: 30%; bottom: calc(var(--sea-h) - 54px); }
+.swimmer-2 { right: 14%; bottom: calc(var(--sea-h) - 74px); width: clamp(36px, 4.4vw, 62px); }
+.swimmer-3 { right: 5%;  bottom: calc(var(--sea-h) - 44px); width: clamp(34px, 4.2vw, 58px); }
+.swimmer-1 .boy { animation-delay: -.6s; }
+.swimmer-2 .boy { animation-delay: -1.4s; }
+.swimmer-3 .boy { animation-delay: -2s; }
+.swimmer { animation: swimDrift 9s ease-in-out infinite alternate; }
+.swimmer-2 { animation-duration: 11s; animation-delay: -4s; }
+.swimmer-3 { animation-duration: 8s; animation-delay: -2s; }
+.ripple {
+  position: absolute; left: -6%; right: -6%; bottom: -3px; height: 8px; border-radius: 50%;
+  border: 2px solid rgba(255, 255, 240, .75); border-top-color: transparent;
+  animation: rippleOut 2.2s ease-out infinite;
+}
+.splash {
+  position: absolute; left: 72%; bottom: 6px; width: 5px; height: 5px;
+  background: rgba(255, 255, 240, .95); box-shadow: -7px -5px 0 rgba(255, 255, 240, .8), 6px -8px 0 rgba(255, 255, 240, .8);
+  animation: splashUp 1.3s ease-out infinite;
+}
+.sitter { position: absolute; }
+.sitter-1 { left: 31%; bottom: calc(var(--sand-h) - 70px); width: clamp(44px, 5.4vw, 76px); }
+.sitter-2 { left: 41%; bottom: calc(var(--sand-h) - 118px); width: clamp(60px, 7.2vw, 100px); }
+@keyframes swimBob { from { transform: translateY(-3px) rotate(-3deg); } to { transform: translateY(3px) rotate(3deg); } }
+@keyframes swimDrift { from { transform: translateX(-26px); } to { transform: translateX(26px); } }
+@keyframes rippleOut { 0% { transform: scale(.7); opacity: .9; } 100% { transform: scale(1.5); opacity: 0; } }
+@keyframes splashUp { 0% { transform: translateY(0); opacity: 0; } 25% { opacity: 1; } 100% { transform: translateY(-14px); opacity: 0; } }
+@media (max-width: 860px) {
+  .sitter-1 { left: 6%; bottom: calc(var(--sand-h) - 150px); }
+  .sitter-2 { left: 22%; bottom: calc(var(--sand-h) - 160px); }
+  .swimmer-1 { right: 38%; }
+}
+
+/* ---- More About Me : abyss page ---- */
+.about-page {
+  position: fixed; inset: 0; z-index: 200;
+  background: linear-gradient(180deg, #07142A 0%, #050B16 45%, #02050C 100%);
+  opacity: 0; visibility: hidden; transition: opacity .45s ease, visibility 0s .45s;
+}
+.about-page.is-open { opacity: 1; visibility: visible; transition: opacity .45s ease; }
+.about-scroll { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; }
+.about-scroll:focus { outline: none; }
+.about-scene { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.about-inner {
+  position: relative; z-index: 3; max-width: 1040px; margin: 0 auto;
+  padding: 2rem clamp(1.1rem, 5vw, 3rem) 6rem;
+}
+.about-top { margin-bottom: 2rem; }
+.about-page .panel { --bc: var(--teal); background: rgba(5, 11, 22, .84); }
+.about-block p { max-width: 68ch; margin-bottom: 0; }
+.about-grid {
+  display: grid; gap: 1.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+.about-card {
+  padding: 1.3rem; border-radius: 6px;
+  background: linear-gradient(160deg, rgba(5, 11, 22, .9), rgba(18, 59, 88, .7));
+  box-shadow: 0 0 0 3px rgba(32, 178, 170, .8), 8px 8px 0 0 rgba(0, 0, 0, .35), 0 0 24px rgba(92, 244, 255, .1);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.about-card:hover { transform: translateY(-4px); box-shadow: 0 0 0 3px var(--turq), 8px 8px 0 0 rgba(0, 0, 0, .35), 0 0 28px rgba(92, 244, 255, .22); }
+.about-card h4 { font-family: var(--font-pixel); font-size: .72rem; line-height: 1.7; color: var(--gold); }
+.about-card p { margin: 0; font-size: .95rem; }
+.about-card .card-icon svg { width: 46px; height: 46px; }
+.about-rays {
+  position: absolute; top: 0; left: -10%; width: 120%; height: 55%;
+  background: repeating-linear-gradient(104deg, rgba(99, 214, 208, 0) 0 130px, rgba(99, 214, 208, .09) 170px, rgba(99, 214, 208, 0) 230px);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent); mask-image: linear-gradient(to bottom, #000, transparent);
+  animation: raySway 18s ease-in-out infinite alternate;
+}
+.about-scene .fog-a { top: 22%; }
+.about-scene .fog-b { top: 66%; }
+.about-bubbles { position: absolute; inset: 0; }
+.about-bubbles .bubble { opacity: .55; }
+.about-scene .layer { inset: -8% 0; }
+
+/* Giant kraken eyes */
+.eye { position: absolute; width: var(--ew, 300px); height: calc(var(--ew, 300px) * .62); }
+.eye-glow {
+  position: absolute; inset: -60%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(92, 244, 255, .30), rgba(32, 178, 170, .10) 42%, transparent 68%);
+  animation: eyePulse 6s ease-in-out infinite alternate;
+}
+.eye-ball {
+  position: absolute; inset: 0; overflow: hidden; display: block;
+  border-radius: 50% / 62%;
+  background: radial-gradient(ellipse at 50% 40%, #0B2A3A, #04101A 75%);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, .9), 0 0 36px rgba(92, 244, 255, .28);
+}
+.iris {
+  position: absolute; left: 50%; top: 50%; width: 56%; aspect-ratio: 1; display: block; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #02070D 0 24%, #5CF4FF 26%, #20B2AA 58%, #0B6A66 100%);
+  box-shadow: 0 0 34px rgba(92, 244, 255, .8);
+  animation: eyeLook 14s ease-in-out infinite;
+}
+.pupil { position: absolute; left: 41%; top: 12%; width: 18%; height: 76%; display: block; border-radius: 50%; background: #010409; }
+.shine { position: absolute; left: 62%; top: 22%; width: 10%; height: 10%; display: block; border-radius: 50%; background: rgba(255, 255, 240, .8); }
+.lid {
+  position: absolute; left: -5%; right: -5%; top: -2%; height: 0; display: block;
+  background: #02050C; border-bottom: 3px solid rgba(32, 178, 170, .35);
+  animation: eyeBlink 9s infinite;
+}
+.eye-1 { --ew: clamp(220px, 30vw, 440px); left: -6%; top: 10%; }
+.eye-2 { --ew: clamp(220px, 30vw, 440px); right: -7%; top: 34%; }
+.eye-2 .lid { animation-delay: -3.4s; }
+.eye-3 { --ew: clamp(120px, 15vw, 220px); left: 34%; top: 6%; }
+.eye-4 { --ew: clamp(110px, 13vw, 190px); left: 8%; top: 68%; }
+.eye-5 { --ew: clamp(100px, 12vw, 170px); right: 16%; top: 78%; }
+.eye.far { opacity: .38; filter: blur(1px); }
+.eye-3 .lid { animation-delay: -6s; animation-duration: 11s; }
+.eye-4 .lid { animation-delay: -1.8s; animation-duration: 13s; }
+.eye-5 .lid { animation-delay: -8s; animation-duration: 10s; }
+.eye-1, .eye-2 { animation: eyeDrift 16s ease-in-out infinite alternate; }
+@keyframes eyePulse { from { opacity: .6; transform: scale(.95); } to { opacity: 1; transform: scale(1.05); } }
+@keyframes eyeLook { 0%, 100% { transform: translate(-50%, -50%); } 30% { transform: translate(-30%, -54%); } 65% { transform: translate(-68%, -46%); } }
+@keyframes eyeBlink { 0%, 90%, 100% { height: 0; } 93% { height: 54%; } 95% { height: 104%; } 97% { height: 54%; } }
+@keyframes eyeDrift { from { transform: translateY(-10px); } to { transform: translateY(12px); } }
+
+/* Anglerfish */
+.creature-angler { filter: drop-shadow(0 0 4px rgba(32, 178, 170, .15)); }
+.creature-angler .bob svg { overflow: visible; }
+.lure-glow { animation: lurePulse 2.4s ease-in-out infinite alternate; }
+@keyframes lurePulse { from { opacity: .55; } to { opacity: 1; } }
+
+@media (max-width: 860px) {
+  .eye-3, .eye-5 { display: none; }
+  .eye-1 { left: -22%; } .eye-2 { right: -24%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-page { transition: none; }
+  .lid { animation: none !important; height: 0 !important; }
+}
+
+/* Anglerfish lure glow (flips with the body) */
+.angler-wrap { position: relative; display: block; }
+.creature-angler.to-left .bob svg { transform: none; }
+.creature-angler.to-left .angler-wrap { transform: scaleX(-1); }
+.lure-glow {
+  position: absolute; left: 85%; top: 29%; width: 20%; aspect-ratio: 1; margin: -10% 0 0 -10%;
+  border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(200, 255, 255, .95) 0, rgba(92, 244, 255, .55) 30%, rgba(32, 178, 170, 0) 70%);
+  transform: scale(2.4);
+}
+
+/* Fixes: toast no longer peeks above the bottom edge; sand boys stay clear of the hero panel */
+.toast { opacity: 0; visibility: hidden; transition: transform .25s steps(4), opacity .2s, visibility 0s .25s; }
+.toast.show { opacity: 1; visibility: visible; transition: transform .25s steps(4), opacity .2s; }
+.sitter-1 { left: 27%; }
+.sitter-2 { left: 14%; }
