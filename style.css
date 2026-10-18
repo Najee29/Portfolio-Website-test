@@ -1175,3 +1175,6 @@ html:not(.js) .skill-fill { width: 60%; }
 }
 .kpupil.l { left: 22.5%; }
 .kpupil.r { left: 72.5%; }
+
+.discord-tag { display: inline-flex; align-items: center; gap: .6rem; color: var(--ivory); }
+.discord-tag svg { width: 28px; height: 28px; fill: currentColor; flex: none; }

@@ -13,29 +13,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-<<<<<<< HEAD
-  <link rel="stylesheet" href="styles.css">
-=======
   <link rel="stylesheet" href="style.css">
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
   <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <!--
-  ====================================================================
-  HOW TO CUSTOMIZE THIS PORTFOLIO
-  ====================================================================
-  1. Profile photo ......... put a square photo at  images/profile.jpg
-  2. Project screenshots ... put images at  images/project-1.png, project-2.png, project-3.png
-                             (missing images automatically show a placeholder)
+  HOW TO CUSTOMIZE
+  1. Profile photo ......... assets/profile.jpg (square)
+  2. Project screenshots ... assets/project-1.png, assets/pcassembly.jpg, assets/project-3.png
   3. Anything in [square brackets] is a placeholder: search for "[" and replace it.
-  4. Address: find the row marked "OPTIONAL ADDRESS" in the hero and remove the
-     word  hidden  from it if you want to show it.
-  5. skills: edit the text inside each <article class="card">.
-     Proficiency dots: change  data-level="3"  (0 to 5).
-  6. Projects: edit each project card AND its matching <div class="project-details">.
-  7. Links: replace the example GitHub / LinkedIn / Facebook / email addresses.
-  ====================================================================
+  4. Address: remove the word  hidden  from the row marked "OPTIONAL ADDRESS" to show it.
 -->
 
 <body>
@@ -52,7 +39,7 @@
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#surface"  data-scroll data-zone-link="surface"><span class="n">01</span>Surface</a></li>
         <li><a href="#shallows" data-scroll data-zone-link="shallows"><span class="n">02</span>Shallows</a></li>
-        <li><a href="#abyss" data-scroll data-zone-link="abyss"><span class="n">03</span>Abyss</a></li>
+        <li><a href="#abyss"    data-scroll data-zone-link="abyss"><span class="n">03</span>Abyss</a></li>
         <li><a href="#depths"   data-scroll data-zone-link="depths"><span class="n">04</span>Depths</a></li>
       </ul>
 
@@ -73,15 +60,14 @@
   <aside class="depth-gauge" aria-label="Depth indicator and zone shortcuts">
     <div class="gauge-track">
       <span class="gauge-fill" id="gauge-fill" aria-hidden="true"></span>
-      <a class="gauge-tick" href="#surface"  data-scroll data-zone-link="surface"  data-index="0" style="top:0%"  aria-label="The Surface"        title="The Surface"></a>
-      <a class="gauge-tick" href="#shallows" data-scroll data-zone-link="shallows" data-index="1" style="top:25%" aria-label="The Shallows"       title="The Shallows"></a>
-      <a class="gauge-tick" href="#abyss"    data-scroll data-zone-link="abyss"    data-index="2" style="top:55%" aria-label="The Abyss"          title="The Abyss"></a>
-      <a class="gauge-tick" href="#depths"   data-scroll data-zone-link="depths"   data-index="3" style="top:85%" aria-label="The Abyssal Depths"  title="The Abyssal Depths"></a>
+      <a class="gauge-tick" href="#surface"  data-scroll data-zone-link="surface"  data-index="0" style="top:0%"  aria-label="The Surface"       title="The Surface"></a>
+      <a class="gauge-tick" href="#shallows" data-scroll data-zone-link="shallows" data-index="1" style="top:25%" aria-label="The Shallows"      title="The Shallows"></a>
+      <a class="gauge-tick" href="#abyss"    data-scroll data-zone-link="abyss"    data-index="2" style="top:55%" aria-label="The Abyss"         title="The Abyss"></a>
+      <a class="gauge-tick" href="#depths"   data-scroll data-zone-link="depths"   data-index="3" style="top:85%" aria-label="The Abyssal Depths" title="The Abyssal Depths"></a>
       <span class="gauge-marker" id="gauge-marker" aria-hidden="true"></span>
     </div>
   </aside>
 
-  <!-- Fixed effects: rising bubbles and a darkening vignette -->
   <div class="bubbles" id="bubbles" aria-hidden="true"></div>
   <div class="vignette" id="vignette" aria-hidden="true"></div>
 
@@ -102,7 +88,7 @@
         <div class="shore-critter crab" data-sprite="crab"></div>
         <div class="shore-critter starfish" data-sprite="starfish"></div>
 
-        <!-- Exactly five boys: 3 swimming, 2 relaxing on the sand -->
+        <!-- Five boys: 3 swimming, 2 relaxing on the sand -->
         <div class="boys" aria-hidden="true">
           <div class="swimmer swimmer-1"><span class="ripple"></span><span class="boy" data-sprite="boy-swim" data-palette="boyA"></span><i class="splash"></i></div>
           <div class="swimmer swimmer-2"><span class="ripple"></span><span class="boy" data-sprite="boy-swim" data-palette="boyB"></span><i class="splash"></i></div>
@@ -116,8 +102,7 @@
         <figure class="profile-card reveal">
           <div class="profile-frame">
             <span class="profile-fallback" aria-hidden="true">Your photo<br>goes here</span>
-            <!-- Replace images/profile.jpg with your own square photo -->
-            <img src="images/profile.jpg" alt="Portrait of Najee M. Ahmad" width="320" height="320" data-fallback>
+            <img src="assets/faceportfolio1.jfif" alt="Portrait of Najee M. Ahmad" width="320" height="320" data-fallback>
           </div>
           <figcaption>Grade 12 &middot; TVL-3 CSS</figcaption>
         </figure>
@@ -145,12 +130,14 @@
             the websites on the screen. I'm always looking for opportunities to learn new skills, improve my technical knowledge, and challenge myself to grow. I believe that progress comes from consistency, curiosity, and the willingness to learn from mistakes. My goal is to continue developing my abilities, explore new possibilities in technology, and become a better version of myself every day.
           </p>
 
-          <button type="button" class="btn btn-primary btn-wave" data-scroll-target="shallows">
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary btn-wave" data-scroll-target="shallows">
               Dive Into My World <span class="btn-arrow" aria-hidden="true">&#9660;</span>
             </button>
-           <a class="btn btn-secondary btn-wave" href="about.html">
-  More About Me <span class="btn-arrow side" aria-hidden="true">&#9658;</span>
-</a>
+            <a class="btn btn-secondary btn-wave" href="about.html">
+              More About Me <span class="btn-arrow side" aria-hidden="true">&#9658;</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -181,7 +168,7 @@
             <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-html">HTML &amp; CSS</button></h4>
             <p class="card-teaser">Building and styling web pages.</p>
             <div class="card-more" id="more-html"><div class="card-more-inner">
-              <p>Creating and styling websites with clean layouts, responsive designs, and organized content.
+              <p>Creating and styling websites with clean layouts, responsive designs, and organized content.</p>
               <div class="meter-row"><span class="meter-label">Proficiency</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
             </div></div>
           </article>
@@ -191,7 +178,7 @@
             <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-js">JavaScript</button></h4>
             <p class="card-teaser">Making pages interactive.</p>
             <div class="card-more" id="more-js"><div class="card-more-inner">
-              <p>Adding interactive features and dynamic behavior to websites.
+              <p>Adding interactive features and dynamic behavior to websites.</p>
               <div class="meter-row"><span class="meter-label">Proficiency</span><span class="meter" data-level="2" role="img" aria-label="Proficiency: 2 out of 5"></span></div>
             </div></div>
           </article>
@@ -201,7 +188,7 @@
             <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-hw">Computer Hardware</button></h4>
             <p class="card-teaser">Parts, assembly and upkeep.</p>
             <div class="card-more" id="more-hw"><div class="card-more-inner">
-              <p>Understanding computer components, assembling PCs, and performing basic hardware maintenance.
+              <p>Understanding computer components, assembling PCs, and performing basic hardware maintenance.</p>
               <div class="meter-row"><span class="meter-label">Proficiency</span><span class="meter" data-level="4" role="img" aria-label="Proficiency: 4 out of 5"></span></div>
             </div></div>
           </article>
@@ -211,7 +198,7 @@
             <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-ts">Troubleshooting</button></h4>
             <p class="card-teaser">Finding and fixing computer problems.</p>
             <div class="card-more" id="more-ts"><div class="card-more-inner">
-              <p>Identifying computer problems, diagnosing their causes, and finding effective solutions.
+              <p>Identifying computer problems, diagnosing their causes, and finding effective solutions.</p>
               <div class="meter-row"><span class="meter-label">Proficiency</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
             </div></div>
           </article>
@@ -221,11 +208,9 @@
             <h4 class="card-title"><button type="button" class="card-toggle" aria-expanded="false" aria-controls="more-net">Networking</button></h4>
             <p class="card-teaser">Connecting computers together.</p>
             <div class="card-more" id="more-net"><div class="card-more-inner">
-              <p>Connecting computers and configuring networks to enable communication and resource sharing.
+              <p>Connecting computers and configuring networks to enable communication and resource sharing.</p>
               <div class="meter-row"><span class="meter-label">Proficiency</span><span class="meter" data-level="3" role="img" aria-label="Proficiency: 3 out of 5"></span></div>
             </div></div>
-          </article>
-
           </article>
         </div>
       </div>
@@ -268,26 +253,17 @@
             </div>
             <div class="shot">
               <span class="shot-fallback" aria-hidden="true">Screenshot placeholder</span>
-<<<<<<< HEAD
               <img src="assets/project-1.png" alt="Screenshot of Project 1, a personal portfolio website" width="800" height="500" data-fallback>
             </div>
             <div class="project-body">
               <h3>Project 1: Personal Website</h3>
               <p>A personal portfolio website built using HTML, CSS, and JavaScript to showcase my skills, background, and interests.</p>
-=======
-              <img src="assets/project-1.png" alt="Screenshot of Sample Project 1, a personal portfolio website" width="800" height="500" data-fallback>
-            </div>
-            <div class="project-body">
-              <h3>Sample Project 1: Personal Website</h3>
-              <p>[Edit] A short description of a website you designed and built from scratch.</p>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
               <ul class="tags" aria-label="Technologies used">
                 <li>HTML</li><li>CSS</li><li>JavaScript</li>
               </ul>
               <button type="button" class="btn btn-ghost" data-project-open="project-1-details">View Details</button>
             </div>
             <div class="project-details" id="project-1-details" hidden>
-<<<<<<< HEAD
               <h3>Project 1: Personal Website</h3>
               <p class="detail-meta">Placeholder &middot; [Month Year] &middot; [Solo / Team]</p>
               <div class="shot">
@@ -295,27 +271,12 @@
                 <img src="assets/project-1.png" alt="Screenshot of Project 1, a personal portfolio website" width="800" height="500" data-fallback>
               </div>
               <h4>Overview</h4>
-              <p>A Portfolio Website.</p>
+              <p>A portfolio website.</p>
               <h4>What I did</h4>
               <ul class="detail-list">
                 <li>Planned the layout and chose the colors.</li>
                 <li>Wrote the HTML, CSS and JavaScript with the help of AI.</li>
                 <li>Tested it on phone and desktop.</li>
-=======
-              <h3>Sample Project 1: Personal Website</h3>
-              <p class="detail-meta">Placeholder &middot; [Month Year] &middot; [Solo / Team]</p>
-              <div class="shot">
-                <span class="shot-fallback" aria-hidden="true">Screenshot placeholder</span>
-                <img src="assets/project-1.png" alt="Screenshot of Sample Project 1, a personal portfolio website" width="800" height="500" data-fallback>
-              </div>
-              <h4>Overview</h4>
-              <p>[Edit] Explain what the project is, who it is for, and why you made it.</p>
-              <h4>What I did</h4>
-              <ul class="detail-list">
-                <li>[Edit] Planned the layout and chose the colors.</li>
-                <li>[Edit] Wrote the HTML, CSS and JavaScript.</li>
-                <li>[Edit] Tested it on phone and desktop.</li>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
               </ul>
               <h4>Skills used</h4>
               <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
@@ -331,52 +292,30 @@
             </div>
             <div class="shot">
               <span class="shot-fallback" aria-hidden="true">Screenshot placeholder</span>
-<<<<<<< HEAD
               <img src="assets/pcassembly.jpg" alt="Photo of Project 2, a PC assembly and troubleshooting log" width="800" height="500" data-fallback>
             </div>
             <div class="project-body">
               <h3>Project 2: PC Assembly &amp; Troubleshooting Log</h3>
               <p>A hands-on computer hardware activity involving identifying components, assembling a PC, and learning basic troubleshooting techniques.</p>
-=======
-              <img src="assets/project-2.png" alt="Photo of Sample Project 2, a PC assembly and troubleshooting log" width="800" height="500" data-fallback>
-            </div>
-            <div class="project-body">
-              <h3>Sample Project 2: PC Assembly &amp; Troubleshooting Log</h3>
-              <p>[Edit] Document a computer you assembled, repaired or diagnosed.</p>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
               <ul class="tags" aria-label="Skills used">
                 <li>Hardware</li><li>Troubleshooting</li><li>Documentation</li>
               </ul>
               <button type="button" class="btn btn-ghost" data-project-open="project-2-details">View Details</button>
             </div>
             <div class="project-details" id="project-2-details" hidden>
-<<<<<<< HEAD
               <h3>Project 2: PC Assembly &amp; Troubleshooting Log</h3>
               <p class="detail-meta">Placeholder &middot; [Month Year] &middot; [Class activity / Personal]</p>
               <div class="shot">
                 <span class="shot-fallback" aria-hidden="true">Photo placeholder</span>
                 <img src="assets/pcassembly.jpg" alt="Photo of Project 2, a PC assembly and troubleshooting log" width="800" height="500" data-fallback>
-=======
-              <h3>Sample Project 2: PC Assembly &amp; Troubleshooting Log</h3>
-              <p class="detail-meta">Placeholder &middot; [Month Year] &middot; [Class activity / Personal]</p>
-              <div class="shot">
-                <span class="shot-fallback" aria-hidden="true">Photo placeholder</span>
-                <img src="assets/project-2.png" alt="Photo of Sample Project 2, a PC assembly and troubleshooting log" width="800" height="500" data-fallback>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
               </div>
               <h4>Overview</h4>
               <p>[Edit] Describe the computer, the problem or the build goal.</p>
               <h4>What I did</h4>
               <ul class="detail-list">
-<<<<<<< HEAD
                 <li>Identified and installed the components.</li>
                 <li>Tested the system and recorded the results.</li>
                 <li>Wrote down the problem, the cause and the fix.</li>
-=======
-                <li>[Edit] Identified and installed the components.</li>
-                <li>[Edit] Tested the system and recorded the results.</li>
-                <li>[Edit] Wrote down the problem, the cause and the fix.</li>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
               </ul>
               <h4>Skills used</h4>
               <ul class="tags"><li>Hardware</li><li>Troubleshooting</li><li>Documentation</li></ul>
@@ -391,51 +330,30 @@
             </div>
             <div class="shot">
               <span class="shot-fallback" aria-hidden="true">Screenshot placeholder</span>
-<<<<<<< HEAD
               <img src="assets/project-3.png" alt="Diagram of Project 3, a small local area network setup" width="800" height="500" data-fallback>
             </div>
             <div class="project-body">
               <h3>Project 3: Small LAN Setup</h3>
               <p>A basic local area network (LAN) setup demonstrating how computers connect and communicate through networking devices.</p>
-=======
-              <img src="assets/project-3.png" alt="Diagram of Sample Project 3, a small local area network setup" width="800" height="500" data-fallback>
-            </div>
-            <div class="project-body">
-              <h3>Sample Project 3: Small LAN Setup</h3>
-              <p>[Edit] Show a network you planned, cabled or configured.</p>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
               <ul class="tags" aria-label="Skills used">
                 <li>Networking</li><li>Cabling</li><li>Configuration</li>
               </ul>
               <button type="button" class="btn btn-ghost" data-project-open="project-3-details">View Details</button>
             </div>
             <div class="project-details" id="project-3-details" hidden>
-<<<<<<< HEAD
               <h3>Project 3: Small LAN Setup</h3>
-=======
-              <h3>Sample Project 3: Small LAN Setup</h3>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
               <p class="detail-meta">Placeholder &middot; [Month Year] &middot; [Class activity / Personal]</p>
               <div class="shot">
                 <span class="shot-fallback" aria-hidden="true">Diagram placeholder</span>
-                <img src="assets/project-3.png" alt="Diagram of Sample Project 3, a small local area network setup" width="800" height="500" data-fallback>
+                <img src="assets/project-3.png" alt="Diagram of Project 3, a small local area network setup" width="800" height="500" data-fallback>
               </div>
               <h4>Overview</h4>
-<<<<<<< HEAD
-              <p>A Performance Task on our G12 CSS Subject.</p>
+              <p>A performance task in our Grade 12 CSS subject.</p>
               <h4>What I did</h4>
               <ul class="detail-list">
                 <li>Prepared and tested the network cables.</li>
                 <li>Configured IP addresses and checked connectivity.</li>
-                <li></li>Solved any connection problems.</li>
-=======
-              <p>[Edit] Describe the network: how many computers, what equipment, and what it was for.</p>
-              <h4>What I did</h4>
-              <ul class="detail-list">
-                <li>[Edit] Prepared and tested the network cables.</li>
-                <li>[Edit] Configured IP addresses and checked connectivity.</li>
-                <li>[Edit] Solved any connection problems.</li>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
+                <li>Solved any connection problems.</li>
               </ul>
               <h4>Skills used</h4>
               <ul class="tags"><li>Networking</li><li>Cabling</li><li>Configuration</li></ul>
@@ -482,56 +400,32 @@
           <section class="panel reveal" aria-labelledby="goals-title">
             <h3 id="goals-title" class="panel-title">Future Goals</h3>
             <ul class="bullet-list">
-<<<<<<< HEAD
               <li>Finish Senior High School with strong grades.</li>
               <li>Learn new skills and become more independent.</li>
               <li>My goal is to live a successful life, achieve my dreams, and build a future I'm proud of.</li>
-=======
-              <li>[Edit] Finish Senior High School with strong grades.</li>
-              <li>[Edit] Earn a national certificate in Computer Systems Servicing.</li>
-              <li>[Edit] Build a portfolio of real projects.</li>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
             </ul>
           </section>
 
           <section class="panel reveal" aria-labelledby="career-title">
             <h3 id="career-title" class="panel-title">Career Aspirations</h3>
-<<<<<<< HEAD
-            <p>I want to discover my true passion and find a career that matches my interests. I'm willing to explore new opportunities, learn from experiences, and work toward a future I'm proud of.
-=======
-            <p>[Edit] Describe the CSS or IT career you want, for example a computer technician, network technician, IT support specialist or web developer, and why it interests you.</p>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
+            <p>I want to discover my true passion and find a career that matches my interests. I'm willing to explore new opportunities, learn from experiences, and work toward a future I'm proud of.</p>
           </section>
 
           <section class="panel reveal" aria-labelledby="learn-title">
             <h3 id="learn-title" class="panel-title">Skills I Want to Learn</h3>
             <ul class="tags tags-large">
-<<<<<<< HEAD
               <li>Video Editing</li>
               <li>Cybersecurity basics</li>
               <li>Server administration</li>
               <li>Computer Networking Design</li>
             </ul>
-=======
-              <li>[Skill 1]</li>
-              <li>Cybersecurity basics</li>
-              <li>Server administration</li>
-              <li>[Skill 4]</li>
-            </ul>
-            <p class="small-note">Edit these chips to match your own learning goals.</p>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
           </section>
         </div>
 
         <section class="panel bottle reveal" aria-labelledby="message-title">
           <h3 id="message-title" class="panel-title">A Message in a Bottle</h3>
           <p>
-<<<<<<< HEAD
             Life is a journey of learning, growing, and discovering who we are. We must keep moving forward, face the unknown, and become people we can be proud of, no matter how deep the waters get.
-=======
-            Thank you for diving all the way down. [Replace this with your own final message to visitors: what
-            you hope they remember, what you're excited about, and an invitation to get in touch.]
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
           </p>
         </section>
 
@@ -547,30 +441,17 @@
             </div>
             <div class="contact-row">
               <dt>Phone</dt>
-<<<<<<< HEAD
-              <dd><a href="tel:+639362821298">+63 936 282 1298</a> <span class="small-note"></span></dd>
+              <dd><a href="tel:+639173295731">+63 917 329 5731</a></dd>
             </div>
           </dl>
           <ul class="social-links">
-  <li><a class="btn btn-ghost" href="https://www.instagram.com/na_jeeeeeeeeeeeeee/" target="_blank" rel="noopener noreferrer">Instagram &#8599;</a></li>
-  <li><a class="btn btn-ghost" href="https://www.facebook.com/profile.php?id=100091168187155" target="_blank" rel="noopener noreferrer">Facebook &#8599;</a></li>
-  <span class="discord-tag">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
-    <span class="sr-only">Discord hha1se</span>
-    <span>hha1se</span>
-
-  </span>
-</a></li>
-=======
-              <dd><a href="tel:+639362821298">+63 936 282 1298</a> <span class="small-note">[example]</span></dd>
-            </div>
-          </dl>
-          <ul class="social-links">
-  <li><a class="btn btn-ghost" href="https://www.instagram.com/your.username" target="_blank" rel="noopener noreferrer">Instagram &#8599;</a></li>
-  <li><a class="btn btn-ghost" href="https://discord.com/users/YOUR_USER_ID" target="_blank" rel="noopener noreferrer">Discord &#8599;</a></li>
-  <li><a class="btn btn-ghost" href="https://www.facebook.com/your.profile" target="_blank" rel="noopener noreferrer">Facebook &#8599;</a></li>
->>>>>>> 22ca4a60cbf1c02a5a2e9319071962d22ee750e9
-</ul>
+            <li><a class="btn btn-ghost" href="https://www.instagram.com/na_jeeeeeeeeeeeeee/" target="_blank" rel="noopener noreferrer">Instagram &#8599;</a></li>
+            <li><a class="btn btn-ghost" href="https://www.facebook.com/profile.php?id=100091168187155" target="_blank" rel="noopener noreferrer">Facebook &#8599;</a></li>
+            <li class="discord-tag">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+              <span class="sr-only">Discord:</span><span>hha1se</span>
+            </li>
+          </ul>
         </section>
 
         <div class="return-wrap reveal">
